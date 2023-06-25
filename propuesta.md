@@ -26,7 +26,7 @@ eligiendo entre conseguir X cantidad de victorias o X cantidad de monedas.
 
 ### Modelo
 
-    ![Diagrama Entidad-Relacion](https://github.com/pandugat/TP-DSW-Faulin-Romero-Russmann/Imagen/TPDER.png)
+    ![Diagrama Entidad-Relacion](https://github.com/pandugat/TP-DSW-Faulin-Romero-Russmann/blob/main/Imagen/TPDER.png)
 
 ## Alcance Funcional
 
