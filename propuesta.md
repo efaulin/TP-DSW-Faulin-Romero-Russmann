@@ -26,7 +26,7 @@ eligiendo entre conseguir X cantidad de victorias o X cantidad de monedas.
 
 ### Modelo
 
-    ![Diagrama Entidad-Relacion](/Imagen/TP-DER.png)
+    ![Diagrama Entidad-Relacion](/Imagen/TPDER.png)
 
 ## Alcance Funcional
 
