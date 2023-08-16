@@ -1,16 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 #Apple {
-  width: 50%;
+  width: 40vh;
   position: relative;
   margin: auto;
+  display: block;
+  top: 5vh;
   z-index: 1;
 }
 #Yakuza {
   position: fixed;
-  left: -5vh;
+  left: -5vw;
   bottom: -5vh;
   width: 110vw;
   height: 110vh;
   object-fit: cover;
   filter: blur(5px);
+}
+button {
+  height: 20vh;
+  width: auto;
+  aspect-ratio: 16/9;
+  top: 20vh;
+  display: block;
+  font-size: 5vh;
+  color: #d98457;
+  border: 2px solid #d98457;
+  background-color: #f0be8b;
+  border-radius: 50px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
 }
