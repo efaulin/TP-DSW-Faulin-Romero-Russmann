@@ -21,7 +21,7 @@
         extraHeaders: {
           "user": user
         }
-});
+    });
     const players = {}
     const labels = {}
     const saltos = {}
@@ -36,7 +36,7 @@
           labels[id].textContent = players[id].user;
           saltos[id] = document.createElement("br");
 
-          var lista = document.getElementById("lista");
+          var lista = document.getElementById("lobby");
           lista.appendChild(labels[id]);
           lista.appendChild(saltos[id]);
         }
@@ -55,13 +55,31 @@
       console.log(players)
     });
 
+    socket.on('newMsg', (msg) => {
+      var li = document.createElement("li");
+      li.textContent = `[${msg.user}]: ${msg.msg}`;
+      var chat = document.getElementById("chat");
+      chat.appendChild(li);
+    })
+
+    function sendMsg(){
+      var text = document.getElementById("text");
+      console.log(text.value)
+      socket.emit("sendMsg", text.value);
+      text.value = "";
+    }
   </script>
 </head>
 
-<body>
-  <h1>Chat dou</h1>
-  <h2 style="margin: 2px 0px 2px;">Lobby:</h2>
-  <span id="lista"></span>
+<body style="background-color: black;">
+  <h1 style="color: whitesmoke;">Chat dou</h1>
+  <h2 style="margin: 2px 0px 2px; color: whitesmoke;">Lobby:</h2>
+  <span id="lobby" style="color: whitesmoke;"></span>
+  <form>
+    <input type="text" id="text">
+    <input type="button" onclick="sendMsg()" value="Enviar">
+  </form>
+  <ul title="Chat" id="chat" style="color: whitesmoke;"></ul>
 </body>
 
 </html>

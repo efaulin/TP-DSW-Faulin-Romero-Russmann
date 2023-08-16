@@ -99,6 +99,10 @@ io.on('connection', (socket) => {
     console.log(`user ${socket.id} disconnected for: ${reason}`);
     io.emit('updatePlayers', player)
   });
+
+  socket.on("sendMsg", (msg) => {
+    io.emit("newMsg", { user: player[socket.id].user, msg: msg })
+  });
   
   io.emit('updatePlayers', player)
   console.log(player)
