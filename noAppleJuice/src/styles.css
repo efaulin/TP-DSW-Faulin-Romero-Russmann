@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+#Apple {
+  width: 50%;
+  position: relative;
+  margin: auto;
+  z-index: 1;
+}
+#Yakuza {
+  position: fixed;
+  left: -5vh;
+  bottom: -5vh;
+  width: 110vw;
+  height: 110vh;
+  object-fit: cover;
+  filter: blur(5px);
+}
