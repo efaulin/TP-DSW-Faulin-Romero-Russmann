@@ -8,14 +8,10 @@
   <script>
     //Clase player
     class player{
-      constructor({user, x, y, label, salto}){
+      constructor(user, x, y){
         this.user = user;
         this.x = x;
         this.y = y;
-        this.label = label;
-        this.salto = salto;
-
-        this.label.textContent = user;
       }
     }
   
@@ -27,37 +23,32 @@
         }
     });
     const players = {}
-    /*const labels = {}
-    const saltos = {}*/
+    const labels = {}
+    const saltos = {}
 
     socket.on('updatePlayers', (backendPlayers) => {
       for (const id in backendPlayers){
         const bkdPly = backendPlayers[id]
 
         if (!players[id]){
-          players[id] = new player({
-            user: bkdPly.user,
-            x: bkdPly.x,
-            y: bkdPly.y,
-            label: document.createElement("label"),
-            salto: document.createElement("br")
-          });
-          //players[id].label.textContent = players[id]
-          /*labels[id] = document.createElement("label");
+          players[id] = new player(bkdPly.user, bkdPly.x, bkdPly.y);
+          labels[id] = document.createElement("label");
           labels[id].textContent = players[id].user;
-          saltos[id] = document.createElement("br");*/
+          saltos[id] = document.createElement("br");
 
           var lista = document.getElementById("lobby");
-          lista.appendChild(players[id].label);
-          lista.appendChild(players[id].salto);
+          lista.appendChild(labels[id]);
+          lista.appendChild(saltos[id]);
         }
       }
 
       for (const id in players) {
         if (!backendPlayers[id]) {
-          players[id].label.remove()
-          players[id].salto.remove()
           delete players[id]
+          labels[id].remove()
+          delete labels[id]
+          saltos[id].remove()
+          delete saltos[id]
         }
       }
 
