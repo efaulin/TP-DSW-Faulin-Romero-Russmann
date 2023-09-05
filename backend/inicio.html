@@ -4,9 +4,19 @@
   <meta charset="utf-8">
   <title>Hello World</title>
 </head>
-<style>
-</style>
+<script>
 
+    addEventListener("load", (event) => {
+        const form = document.getElementById("form")
+        form.addEventListener("submit", saveLocalUsername);
+    });
+
+    function saveLocalUsername() {
+        let usr = document.getElementById("userPlay").value;
+        sessionStorage.setItem("user", usr);
+    }
+
+</script>
 <body>
     <h3 style="margin=auto">Action = "/test"</h3>
     <span>Ingrese usuario:</span>
@@ -17,8 +27,8 @@
     <br>
     <h3 style="margin=auto">Action = "/play"</h3>
     <span>Ingrese usuario:</span>
-    <form action="/play" method="get">
-        <input type="text" name="user" id="user">
+    <form action="/play" method="post" id="form">
+        <input type="text" name="user" id="userPlay">
         <input type="submit">
     </form>
 </body>

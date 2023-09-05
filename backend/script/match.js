@@ -1,11 +1,18 @@
-const urlParams = new URLSearchParams(window.location.search);
-const user = urlParams.get('user');
+//const urlParams = new URLSearchParams(window.location.search);
+//const user = urlParams.get('user');
+const user = sessionStorage.getItem("user")
+const players = {}
+
+addEventListener("load", (event) => {
+    const form = document.getElementById("form");
+    form.addEventListener("submit", sendMsg);
+});
+
 var socket = io({
     extraHeaders: {
         "user": user
     }
 });
-const players = {}
 
 socket.on('updatePlayers', (backendPlayers) => {
     for (const id in backendPlayers) {
@@ -44,9 +51,10 @@ socket.on('newMsg', (msg) => {
     chat.appendChild(li);
 })
 
-function sendMsg() {
+function sendMsg(event) {
     var text = document.getElementById("text");
     console.log(text.value)
     socket.emit("sendMsg", text.value);
     text.value = "";
+    event.preventDefault();
 }
