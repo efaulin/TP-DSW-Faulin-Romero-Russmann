@@ -70,8 +70,7 @@ app.post('/user', (req, res) => {
 })
 //#endregion
 
-const player = {};
-
+//#region Routing
 app.get('/test', (req, res) => {
     console.log(`LogIn: ` + req.body.user);
     res.sendFile('frontend.html', { root: __dirname });
@@ -81,6 +80,22 @@ app.post('/play', (req, res) => {
     console.log(`LogIn: ` + req.body.user);
     res.sendFile('match.html', { root: __dirname + '/../frontend/' });
 });
+
+app.post('/lobbys', (req, res) => {
+    console.log(`LogIn: ` + req.body.user);
+    res.sendFile('roomList.html', { root: __dirname + '/../frontend/' });
+});
+
+app.route('/match')
+    .get((req, res) => {
+        //Unirse a una sala
+        console.log(`User [${req.query.user}] wants to join to [${req.query.idMatch}]`);
+        res.sendFile('match.html', { root: __dirname + '/../frontend/' });
+    })
+    .post((req, res) => {
+        //Crear una sala
+        console.log(`User [${req.body.user}] wants to create a lobby`);
+    })
 
 app.get('/entity/:file', (req, res) => {
     var path = __dirname + '/entity/' + req.params.file + '.js';
@@ -94,8 +109,7 @@ app.get('/entity/:file', (req, res) => {
             res.type('txt').send('Not found');
         }
     }
-    catch (err)
-    {
+    catch (err) {
         console.error(err);
         res.status(500);
         res.send(err);
@@ -122,16 +136,41 @@ app.get('/script/:file', (req, res) => {
         return;
     }
 });
+//#endregion
+
+//import { Lobby } from "../entity/lobby.js";
+class Lobby {
+    player = {};
+    constructor({ name }) {
+        this.name = name;
+    }
+}
+
+const lobby = [];
+const nameLobby = [];
+const player = {};
 
 io.on('connection', (socket) => {
     var usr = socket.handshake.headers.user;
-    console.log(`user -${usr}- connected`);
+    console.log(`User [${usr}] new webSocket`);
 
-    player[socket.id] = {
-        user: usr,
-        x: 0,
-        y: 0,
-    };
+    player[socket.id] = { user: usr };
+
+    socket.on("getLobbyList", () => {
+        socket.emit("lobbyList", nameLobby);
+    });
+
+    socket.on("joinMatch", (cntUser, cntIdMatch) => {
+        if (!lobby[cntIdMatch]) {
+            lobby[cntIdMatch] = new Lobby("Test");
+            nameLobby.push("Test " + lobby.lenght);
+        }
+        lobby[cntIdMatch].player[socket.id] = { user: cntUser }
+        socket.join("match-" + cntIdMatch);
+        io.in("match-" + cntIdMatch).emit('updateMatchPlayers', player);
+
+        console.log(`User [${cntUser}] joins to [${cntIdMatch}]`);
+    });
 
     socket.on('disconnect', (reason) => {
         console.log(`user [${player[socket.id].user}: ${socket.id}] disconnected for: ${reason}`);
@@ -142,8 +181,8 @@ io.on('connection', (socket) => {
     socket.on("sendMsg", (msg) => {
         io.emit("newMsg", { user: player[socket.id].user, msg: msg });
     });
-    
-    io.emit('updatePlayers', player);
+
+    socket.emit("lobbyList", nameLobby);
     console.log(player);
 });
 

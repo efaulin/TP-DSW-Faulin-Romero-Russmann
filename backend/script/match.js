@@ -1,6 +1,6 @@
-//const urlParams = new URLSearchParams(window.location.search);
-//const user = urlParams.get('user');
 const user = sessionStorage.getItem("user")
+const urlParams = new URLSearchParams(window.location.search);
+const idMatch = urlParams.get('idMatch');
 const players = {}
 
 addEventListener("load", (event) => {
@@ -10,7 +10,8 @@ addEventListener("load", (event) => {
 
 var socket = io({
     extraHeaders: {
-        "user": user
+        "user": user,
+        "idMatch": idMatch,
     }
 });
 

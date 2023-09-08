@@ -7,29 +7,42 @@
 <script>
 
     addEventListener("load", (event) => {
-        const form = document.getElementById("form")
-        form.addEventListener("submit", saveLocalUsername);
+        var form = document.getElementById("form")
     });
+    
+    function test() {
+        form.method = "get";
+        form.action = "/test";
+        saveLocalUsername()
+    }
+
+    function play() {
+        form.method = "post";
+        form.action = "/play";
+        saveLocalUsername()
+    }
+
+    function lobbys() {
+        form.method = "post";
+        form.action = "/lobbys";
+        saveLocalUsername()
+    }
 
     function saveLocalUsername() {
         let usr = document.getElementById("userPlay").value;
         sessionStorage.setItem("user", usr);
+        form.submit();
     }
 
 </script>
 <body>
     <h3 style="margin=auto">Action = "/test"</h3>
     <span>Ingrese usuario:</span>
-    <form action="/test" method="get">
-        <input type="text" name="user" id="user">
-        <input type="submit">
-    </form>
-    <br>
-    <h3 style="margin=auto">Action = "/play"</h3>
-    <span>Ingrese usuario:</span>
-    <form action="/play" method="post" id="form">
+    <form id="form">
         <input type="text" name="user" id="userPlay">
-        <input type="submit">
+        <input type="button" value="Action = /test" onclick="test()">
+        <input type="button" value="Action = /play" onclick="play()">
+        <input type="button" value="Action = /lobbys" onclick="lobbys()">
     </form>
 </body>
 
