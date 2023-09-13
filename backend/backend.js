@@ -146,7 +146,7 @@ class Lobby {
     }
 }
 
-const lobby = [];
+const lobby = {};
 const nameLobby = [];
 const player = {};
 
@@ -156,6 +156,8 @@ io.on('connection', (socket) => {
 
     player[socket.id] = { user: usr };
 
+    io.emit('updatePlayers', player);
+    
     socket.on("getLobbyList", () => {
         socket.emit("lobbyList", nameLobby);
     });
@@ -163,13 +165,13 @@ io.on('connection', (socket) => {
     socket.on("joinMatch", (cntUser, cntIdMatch) => {
         if (!lobby[cntIdMatch]) {
             lobby[cntIdMatch] = new Lobby("Test");
-            nameLobby.push("Test " + lobby.lenght);
+            nameLobby.push({"name": lobby.lenght});
         }
         lobby[cntIdMatch].player[socket.id] = { user: cntUser }
         socket.join("match-" + cntIdMatch);
-        io.in("match-" + cntIdMatch).emit('updateMatchPlayers', player);
+        io.in("match-" + cntIdMatch).emit('updateMatchPlayers', lobby[cntIdMatch].player);
 
-        console.log(`User [${cntUser}] joins to [${cntIdMatch}]`);
+        console.log(`User [${cntUser}] joins to room:[${cntIdMatch}]`);
     });
 
     socket.on('disconnect', (reason) => {
