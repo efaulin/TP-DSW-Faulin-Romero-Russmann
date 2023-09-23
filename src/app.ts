@@ -1,4 +1,4 @@
-import express from 'express'
+import express, {Request, Response, NextFunction } from 'express'
 import { Personaje, Usuario, Carta, Partida } from './classes.js'
 
 
@@ -60,159 +60,193 @@ const partidas =[
     )
 ]
 
-app.get('/api/personajes', (req, res) => {
+function sanitizePersInput(req: Request, res: Response, next: NextFunction){
+    req.body.data={
+        idPers: req.body.idPers,
+        nomPers: req.body.nomPers,
+        desc: req.body.desc,
+        HP: req.body.HP,
+        ATK: req.body.ATK,
+        DEF: req.body.DEF,
+        EVD: req.body.EVD,
+        VD: req.body.VD,
+        REC: req.body.REC
+    }
+
+    next()
+}
+
+function sanitizeUserInput(req: Request, res: Response, next: NextFunction){
+    req.body.data={
+        idUser: req.body.idUser,
+        nick: req.body.nick,
+        nomUser: req.body.nomUser,
+        passwd: req.body.passwd,
+        EXP: req.body.EXP,
+        userType: req.body.userType,
+        Mazo: req.body.Mazo
+    }
+
+    next()
+}
+
+function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
+    req.body.data={
+        idSession: req.body.idSession,
+        sessionDate: req.body.sessionDate,
+        sessionStatus: req.body.sessionStatus,
+        duration: req.body.duration,
+        scenario: req.body.scenario,
+    }
+
+    next()
+}
+
+function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
+    req.body.data={
+        idCarta: req.body.idCarta,
+        titulo: req.body.titulo,
+        desc: req.body.desc,
+        idTipo: req.body.idTipo,
+        descTipo: req.body.descTipo
+    }
+
+    next()
+}
+
+app.get('/api/personajes', (_, res) => {
     res.json(personajes)
 })
 
 app.get('/api/personajes/:id', (req, res) => {
     const personaje = personajes.find((personaje) => personaje.idPers === req.params.id)
     if(!personaje){
-        res.status(404).send({message:'Personaje Not Found'})
+        return res.status(404).send({message:'Personaje Not Found'})
     }
     res.json(personaje)
 })
 
-app.post('/api/personajes', (req, res) => {
-    const {idPers, nomPers, desc, HP, ATK, EVD, DEF, VD, REC} = req.body
+app.post('/api/personajes', sanitizePersInput, (req, res) => {
+    const {idPers, nomPers, desc, HP, ATK, EVD, DEF, VD, REC} = req.body.data
     const personaje = new Personaje (idPers, nomPers, desc, HP, ATK, EVD, DEF, VD, REC)
     personajes.push(personaje)
-    res.status(201).send({message:'Personaje creado Exitosamente'})
+    return res.status(201).send({message:'Personaje creado Exitosamente'})
 })
 
-app.put('/api/personajes/:id', (req, res) => {
+app.put('/api/personajes/:id', sanitizePersInput, (req, res) => {
     const personajeId = personajes.findIndex((personaje) => personaje.idPers === req.params.id)
 
     if(personajeId === -1){
-        res.status(404).send({message: "Personaje no Encontrado"})
+        return res.status(404).send({message: "Personaje no Encontrado"})
     }else{
-        const input ={
-            idPers: req.body.idPers,
-            nomPers: req.body.nomPers,
-            desc: req.body.desc,
-            HP: req.body.HP,
-            ATK: req.body.ATK,
-            DEF: req.body.DEF,
-            EVD: req.body.EVD,
-            VD: req.body.VD,
-            REC: req.body.REC
-        }
-        personajes.splice(personajeId, 1, input)
 
-       res.status(200).send({message: "Datos del personaje actualizados correctamente"})
+        personajes.splice(personajeId, 1, req.body.data)
+
+       return res.status(200).send({message: "Datos del personaje actualizados correctamente"})
     }
 })
 
 app.delete('/api/personajes/:id', (req, res) => {
     const personajeId = personajes.findIndex((personaje) => personaje.idPers === req.params.id)
      if(personajeId === -1){
-        res.status(404).send({message:"Personaje no Encontrado"})
+        return res.status(404).send({message:"Personaje no Encontrado"})
      }
 
      personajes.splice(personajeId, 1)
-     res.status(200).send({message: "Personaje borrado Correctamente"})
+     return res.status(200).send({message: "Personaje borrado Correctamente"})
 })
 
 app.get('/api/user/:id', (req, res) => {
     const usuario = usuarios.find((usuario) => usuario.idUser === req.params.id)
     if(!usuario){
-        res.status(404).send({message:'Usuario Not Found'})
+        return res.status(404).send({message:'Usuario Not Found'})
     }
     res.json(usuario)
 })
 
-app.post('/api/user', (req, res) => {
-    const {idUser, nick, nomUser, passwd, EXP, userType, Mazo} = req.body
+app.post('/api/user', sanitizeUserInput, (req, res) => {
+    const {idUser, nick, nomUser, passwd, EXP, userType, Mazo} = req.body.data
     const usuario = new Usuario (idUser, nick, nomUser, passwd, EXP, userType, Mazo)
     usuarios.push(usuario)
-    res.status(201).send({message:'Usuario creado Exitosamente'})
+    return res.status(201).send({message:'Usuario creado Exitosamente'})
 })
 
-app.put('/api/user/:id', (req, res) => {
+app.put('/api/user/:id', sanitizeUserInput, (req, res) => {
     const usuarioId = usuarios.findIndex((usuario) => usuario.idUser === req.params.id)
 
     if(usuarioId === -1){
-        res.status(404).send({message: "usuario no Encontrado"})
+        return res.status(404).send({message: "usuario no Encontrado"})
     }else{
-        const input ={
-            idUser: req.body.idUser,
-            nick: req.body.nick,
-            nomUser: req.body.nomUser,
-            passwd: req.body.passwd,
-            EXP: req.body.EXP,
-            userType: req.body.userType,
-            Mazo: req.body.Mazo
-        }
-        usuarios.splice(usuarioId, 1, input)
 
-       res.status(200).send({message: "Datos del usuario actualizados correctamente"})
+        usuarios.splice(usuarioId, 1, req.body.data)
+
+       return res.status(200).send({message: "Datos del usuario actualizados correctamente"})
     }
 })
 
 app.delete('/api/user/:id', (req, res) => {
     const usuarioId = usuarios.findIndex((usuario) => usuario.idUser === req.params.id)
      if(usuarioId === -1){
-        res.status(404).send({message:"usuario no Encontrado"})
+        return res.status(404).send({message:"usuario no Encontrado"})
      }
 
      usuarios.splice(usuarioId, 1)
-     res.status(200).send({message: "usuario borrado Correctamente"})
+     return res.status(200).send({message: "usuario borrado Correctamente"})
 })
 
-app.get('/api/cartas', (req, res) => {
+app.get('/api/cartas', (_, res) => {
     res.json(cartas)
 })
 
 app.get('/api/cartas/:id', (req, res) => {
     const carta = cartas.find((carta) => carta.idCarta === req.params.id)
     if(!carta){
-        res.status(404).send({message:'carta Not Found'})
+        return res.status(404).send({message:'carta Not Found'})
     }
     res.json(carta)
 })
 
-app.post('/api/cartas', (req, res) => {
-    const {idCarta, titulo, desc, idTipo, descTipo} = req.body
+app.post('/api/cartas', sanitizeCardInput, (req, res) => {
+    const {idCarta, titulo, desc, idTipo, descTipo} = req.body.data
     const carta = new Carta (idCarta, titulo, desc, idTipo, descTipo)
     cartas.push(carta)
-    res.status(201).send({message:'Carta creada Exitosamente'})
+    return res.status(201).send({message:'Carta creada Exitosamente'})
 })
 
-app.get('/api/partidas', (req, res) => {
+app.get('/api/partidas', (_, res) => {
     res.json(partidas)
 })
 
 app.get('/api/partidas/:id', (req, res) => {
     const partida = partidas.find((partida) => partida.idSession === req.params.id)
     if(!partida){
-        res.status(404).send({message:'Partida Not Found'})
+        return res.status(404).send({message:'Partida Not Found'})
     }
     res.json(partida)
 })
 
-app.post('/api/partidas', (req, res) => {
-    const {idSession, sessionDate, sessionStatus, duration, scenario} = req.body
+app.post('/api/partidas', sanitizeSessionInput, (req, res) => {
+    const {idSession, sessionDate, sessionStatus, duration, scenario} = req.body.data
     const partida = new Partida (idSession, sessionDate, sessionStatus, duration, scenario)
     partidas.push(partida)
-    res.status(201).send({message:'Partida creada Exitosamente'})
+    return res.status(201).send({message:'Partida creada Exitosamente'})
 })
 
-app.put('/api/partidas/:id', (req, res) => {
+app.put('/api/partidas/:id', sanitizeSessionInput, (req, res) => {
     const partidaId = partidas.findIndex((partida) => partida.idSession === req.params.id)
 
     if(partidaId === -1){
-        res.status(404).send({message: "Partida no Encontrada"})
+        return res.status(404).send({message: "Partida no Encontrada"})
     }else{
-        const input ={
-            idSession: req.body.idSession,
-            sessionDate: req.body.sessionDate,
-            sessionStatus: req.body.sessionStatus,
-            duration: req.body.duration,
-            scenario: req.body.scenario,
-        }
-        partidas.splice(partidaId, 1, input)
+ 
+        partidas.splice(partidaId, 1, req.body.data)
 
-       res.status(200).send({message: "Datos de la partida actualizados correctamente"})
+       return res.status(200).send({message: "Datos de la partida actualizados correctamente"})
     }
+})
+
+app.use((_, res) =>{
+    return res.status(404).send({message:"Recurso no Encontrado"})
 })
 
 app.listen(3000, ()=> {
