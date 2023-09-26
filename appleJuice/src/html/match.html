@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <style></style>
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <!--<script type="module" src="/socket.io/socket.io.js"></script>-->
+    <script type="module" src="/bundle"></script>
+</head>
+
+<body style="background-color: black;">
+    <h1 style="color: whitesmoke;">Chat dou</h1>
+    <h2 style="margin: 2px 0px 2px; color: whitesmoke;">Lobby:</h2>
+    <span id="lobby" style="color: whitesmoke;"></span>
+    <form id="form">
+        <input type="text" id="text">
+        <input type="submit" value="Enviar">
+    </form>
+    <div style="overflow-x: hidden; overflow-y: scroll; max-height: 500px;">
+        <ul title="Chat" id="chat" style="color: whitesmoke;"></ul>
+    </div>
+</body>
+
+</html>
