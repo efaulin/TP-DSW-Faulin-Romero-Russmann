@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { SessionRepository } from "./partida.repository.js"
 import { Partida } from "./partida.entity.js"
 
-const partidas = new SessionRepository
+const partidas = new SessionRepository()
 
 function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
@@ -17,7 +17,7 @@ function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
 }
 
 function findAll(req: Request, res: Response){
-    res.json(partidas)
+    res.json(partidas.findAll())
 }
 
 function findOne(req: Request, res: Response){

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { CartaRepository } from "./carta.repository.js"
 import { Carta } from "./carta.entity.js"
 
-const cartas = new CartaRepository
+const cartas = new CartaRepository()
 
 function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
@@ -17,7 +17,7 @@ function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
 }
 
 function findAll(_: Request, res: Response){
-    res.json(cartas.findAll)
+    res.json(cartas.findAll())
 }
 
 function findOne(req: Request, res: Response){

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { UserRepository } from "./usuario.repository.js"
 import { Usuario } from "./usuario.entity.js"
 
-const usuarios = new UserRepository
+const usuarios = new UserRepository()
 
 function sanitizeUserInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
@@ -19,7 +19,7 @@ function sanitizeUserInput(req: Request, res: Response, next: NextFunction){
 }
 
 function findAll(_: Request, res: Response) {
-    res.json(usuarios.findAll)
+    res.json(usuarios.findAll())
 }
 
 function findOne(req: Request, res: Response){
