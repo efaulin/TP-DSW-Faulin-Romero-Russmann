@@ -1,7 +1,7 @@
 import { BckPlayer, BckPlayerArray } from "./player.js";
 
 export class Lobby{
-    public player = [] as unknown as BckPlayerArray;
+    public player = new BckPlayerArray();
     constructor(
         public name:string,
     ) {};

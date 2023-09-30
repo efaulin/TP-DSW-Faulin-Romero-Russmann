@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "build-start",
+      "request": "launch",
+      "runtimeArgs": ["run","build-start"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
       "name": "start:dev",
       "request": "launch",
       "runtimeArgs": ["run","start:dev"],
@@ -13,9 +21,9 @@
       "type": "node"
     },
     {
-      "name": "start:both",
+      "name": "build:webpack",
       "request": "launch",
-      "runtimeArgs": ["run","start:both"],
+      "runtimeArgs": ["run","build:webpack"],
       "runtimeExecutable": "npm",
       "skipFiles": ["<node_internals>/**"],
       "type": "node"

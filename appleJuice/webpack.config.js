@@ -42,7 +42,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default {
     mode: 'development',
     entry: {
-        index: './src/script/match.ts',
+        match: './src/script/match.ts',
+        roomList: './src/script/roomList.ts',
     },
     module: {
         rules: [
@@ -58,10 +59,10 @@ export default {
     },
     output: {
         publicPath: 'public',
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'public')
     },
-    devServer: {
+    /*devServer: {
         static: {
             directory: path.join(__dirname, '../../dist/client'),
         },
@@ -72,5 +73,5 @@ export default {
                 ws: true,
             },
         },
-    },
+    },*/
 };

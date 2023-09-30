@@ -10,7 +10,7 @@
     "start:dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/app.js\"",
     "start:webpack": "webpack-dev-server",
     "build:webpack": "webpack",
-    "start:both": "concurrently --kill-others \"npm run start:dev\" \"npm run start:webpack\""
+    "build-start": "concurrently \"npm run build:webpack\" \"npm run start:dev\""
   },
   "author": "Faulin; Romero; Russmann",
   "license": "ISC",

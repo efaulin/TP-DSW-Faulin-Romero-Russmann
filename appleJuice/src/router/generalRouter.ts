@@ -20,8 +20,9 @@ import path from 'path';
 import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename) + "/../";
-const appleJuiceDir = path.resolve(__filename) + "/../../../";
+export const __dirname = path.dirname(__filename) + "/../";
+export const appleJuiceDir = path.resolve(__filename) + "/../../../";
+
 export const generalRouter = Router();
 
 generalRouter.route('/').get((req, res) => {
@@ -34,7 +35,7 @@ generalRouter.route('/chat').post((req, res) => {
 });
 
 generalRouter.post('/lobbys', (req, res) => {
-    console.log(`LogIn: ` + req.body.user);
+    console.log(`LogIn: ` + req.query.user);
     res.sendFile('roomList.html', { root: appleJuiceDir + '/src/html/' });
 });
 
@@ -51,7 +52,7 @@ generalRouter.route('/match')
     })
 
 //Routing para envio de archivos .js
-function filePass(path: fs.PathLike, req: Request, res: Response){
+export function filePass(path: fs.PathLike, req: Request, res: Response){
     console.log("GET -> " + path.toString());
     try {
         if (fs.existsSync(path)) {
@@ -77,10 +78,10 @@ generalRouter.get('/entity/:file', (req, res) => {
 });
 
 generalRouter.get('/script/:file', (req, res) => {
-    var tmpPath = path.resolve(__dirname + '/script/' + req.params.file + '.js');
+    var tmpPath = path.resolve(appleJuiceDir + '/public/' + req.params.file + '.js');
     filePass(tmpPath, req, res);
 });
-
+/*
 generalRouter.get('/socket.io/socket.io.js', (req, res) => {
     var tmpPath = path.resolve(appleJuiceDir + "/node_modules/socket.io-client/dist/socket.io.js");
     filePass(tmpPath, req, res);
@@ -90,7 +91,7 @@ generalRouter.get('/socket.io/socket.io.js.map', (req, res) => {
     var tmpPath = path.resolve(appleJuiceDir + "/node_modules/socket.io-client/dist/socket.io.js.map");
     filePass(tmpPath, req, res);
 });
-
+*/
 generalRouter.get('/bundle', (req, res) => {
     var tmpPath = path.resolve(appleJuiceDir + "/public/bundle.js");
     filePass(tmpPath, req, res);

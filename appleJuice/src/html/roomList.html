@@ -4,9 +4,9 @@
 <head>
     <title>Rooms - ;D</title>
     <style></style>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/entity/lobby"></script>
-    <script src="/script/roomList"></script>
+    <!--<script src="/socket.io/socket.io.js"></script>
+    <script src="/entity/lobby"></script>-->
+    <script type="module" src="/script/roomList"></script>
 </head>
 
 <body style="background-color: black;">
@@ -17,8 +17,8 @@
             <ul title="lobbys" id="lstLobby" style="color: whitesmoke;">
             </ul>
             <input type="button" value="Actualizar"/>
-            <input type="button" value="Crear lobby" onclick="newLobby()"/>
-            <input type="button" value="Entrar" onclick="joinLobby()"/>
+            <input type="button" value="Crear lobby" id="newLobby"/>
+            <input type="button" value="Entrar" id="joinLobby"/>
         </form>
     </span>
 </body>

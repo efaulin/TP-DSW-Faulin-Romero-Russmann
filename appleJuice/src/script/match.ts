@@ -1,17 +1,13 @@
-import { io, Socket } from "../../node_modules/socket.io-client";
-import { ClientToServerEvents, ServerToClientEvents } from "../app";
-import { BckPlayerArray, Player, PlayerArray } from "../entity/player";
+import { io, Socket } from "socket.io-client";
+import { BckPlayer, BckPlayerArray, Player, PlayerArray } from "../entity/player";
+import { ServerToClientEvents, ClientToServerEvents } from "../app.js";
 
 const user = sessionStorage.getItem("user");
 const urlParams = new URLSearchParams(window.location.search);
 const idMatch = urlParams.get('idMatch');
-const player = [] as unknown as PlayerArray;
+const player = new PlayerArray();
 
-var socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
-    "/", {
-    extraHeaders: { "user": "" + user }
-});
-
+var socket : Socket<ServerToClientEvents, ClientToServerEvents> = io("/", { extraHeaders: { "user": ""+user } });
 
 addEventListener("load", (event) => {
     var form = document.getElementById("form")!;
@@ -20,22 +16,25 @@ addEventListener("load", (event) => {
 
 socket.on('updatePlayers', (backendPlayers) => {
     for (const id in backendPlayers) {
-        const bkdPly = backendPlayers[id]
+        const bkdPly : BckPlayer = backendPlayers[id]
 
-        if (!player[id]) {
-            player[id] = new Player( bkdPly.name, document.createElement("label"), document.createElement("br") );
+        if (!player.array[id]) {
+            player.create(new Player(bkdPly.socket, bkdPly.name, document.createElement("label"), document.createElement("br")));
 
             var lista = document.getElementById("lobby")!;
-            lista.appendChild(player[id].label);
-            lista.appendChild(player[id].br);
+            const tmpPly : Player = player.array[id];
+            lista.appendChild(tmpPly.label);
+            lista.appendChild(tmpPly.br);
         }
     }
 
-    for (const id in player) {
-        if (!backendPlayers[id]) {
-            player[id].label.remove()
-            player[id].br.remove()
-            delete player[id]
+    for (const id in player.array) {
+        const ply : Player = player.array[id];
+
+        if (backendPlayers.find((obj, index, array) => { return obj.socket == ply.socket }) == undefined) {
+            ply.label.remove()
+            ply.br.remove()
+            player.delete(ply.socket);
         }
     }
 
@@ -43,16 +42,16 @@ socket.on('updatePlayers', (backendPlayers) => {
 });
 
 socket.on('newMsg', (msg) => {
-    var li = document.createElement("li");
+    var li = document.createElement("li")!;
     li.textContent = `[${msg.user}]: ${msg.msg}`;
     var chat = document.getElementById("chat")!;
     chat.appendChild(li);
 })
 
 function sendMsg(event: Event) {
-    var text = document.getElementById("text")!;
-    console.log(text.textContent)
-    socket.emit("sendMsg", "" + text.textContent);
-    text.textContent = "";
+    var text = document.getElementById("text")! as HTMLInputElement;
+    console.log(text.value)
+    socket.emit("sendMsg", "" + text.value);
+    text.value = "";
     event.preventDefault();
 }
