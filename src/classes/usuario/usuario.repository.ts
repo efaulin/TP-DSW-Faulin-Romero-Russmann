@@ -1,47 +1,48 @@
 import { Repository } from "../../shared/repository.js";
 import { Usuario } from "./usuario.entity.js";
+import { db } from "../../shared/db/conn.js";
 
-const usuarios = [
+const usuariosArray = [
     new Usuario(
         '01',
         'pedro.lolas',
         'carlosperez',
         'pepito043',
-        300,
-        1,
-        []
+        'carl@os'
     )
 ]
 
+const usuarios = db.collection<Usuario>('usuarios')
+
 export class UserRepository implements Repository<Usuario>{
-    public findAll(): Usuario[] | undefined {
-        return usuarios
+    public async findAll(): Promise<Usuario[] | undefined> {
+        return await usuarios.find().toArray()
     }
 
-    public findOne(item: { id: string; }): Usuario | undefined {
-        return usuarios.find((usuario) => usuario.idUser === item.id)
+    public async findOne(item: { id: string; }): Promise<Usuario | undefined> {
+        return await usuariosArray.find((usuario) => usuario.idUser === item.id)
     }
 
-    public add(item: Usuario): Usuario | undefined {
-        usuarios.push(item)
+    public async add(item: Usuario): Promise<Usuario | undefined> {
+        await usuariosArray.push(item)
         return item
     }
 
-    public update(item: Usuario): Usuario | undefined {
-        const usuarioId = usuarios.findIndex((usuario) => usuario.idUser === item.idUser)
+    public async update(item: Usuario): Promise<Usuario | undefined> {
+        const usuarioId =await usuariosArray.findIndex((usuario) => usuario.idUser === item.idUser)
 
         if(usuarioId !== -1){
-            usuarios.splice(usuarioId, 1, item)
+            usuariosArray.splice(usuarioId, 1, item)
         }
         
-        return usuarios[usuarioId]
+        return usuariosArray[usuarioId]
     }
 
-    public delete(item: { id: string; }): Usuario | undefined {
-        const usuarioId = usuarios.findIndex((usuario) => usuario.idUser === item.id)
+    public async delete(item: { id: string; }): Promise<Usuario | undefined> {
+        const usuarioId =await usuariosArray.findIndex((usuario) => usuario.idUser === item.id)
         if(usuarioId !== -1){
-            const borrado = usuarios[usuarioId]
-            usuarios.splice(usuarioId, 1)
+            const borrado = usuariosArray[usuarioId]
+            usuariosArray.splice(usuarioId, 1)
             return borrado
         }
     }

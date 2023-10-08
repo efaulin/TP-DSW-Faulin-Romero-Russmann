@@ -1,10 +1,7 @@
-export class Carta{
+export class Note{
     constructor(
-        public idCarta: string,
-        public titulo: string,
-        public desc: string,        
-        public idTipo: string,
-        public descTipo: string
+        public idItem: string,
+        public desc: string
     )
     {}
 }

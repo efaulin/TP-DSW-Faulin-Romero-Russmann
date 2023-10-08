@@ -4,9 +4,7 @@ export class Usuario{
         public nick: string,
         public nomUser: string,
         public passwd: string,
-        public EXP: number,
-        public userType: number,
-        public Mazo: [],
+        public mail: string
     )
     {}
 }

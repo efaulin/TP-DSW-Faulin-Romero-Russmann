@@ -10,37 +10,35 @@ function sanitizeUserInput(req: Request, res: Response, next: NextFunction){
         nick: req.body.nick,
         nomUser: req.body.nomUser,
         passwd: req.body.passwd,
-        EXP: req.body.EXP,
-        userType: req.body.userType,
-        Mazo: req.body.Mazo
+        mail: req.body.mail
     }
 
     next()
 }
 
-function findAll(_: Request, res: Response) {
-    res.json(usuarios.findAll())
+async function findAll(_: Request, res: Response) {
+    res.json(await usuarios.findAll())
 }
 
-function findOne(req: Request, res: Response){
+async function findOne(req: Request, res: Response){
     const id = req.params.id
-    const personaje = usuarios.findOne({id})
+    const personaje = await usuarios.findOne({id})
     if(!personaje){
         return res.status(404).send({message:'Personaje Not Found'})
     }
     res.json(personaje)
 }
 
-function add(req: Request, res: Response){
-    const {idUser, nick, nomUser, passwd, EXP, userType, Mazo} = req.body.data
-    const usuario = new Usuario (idUser, nick, nomUser, passwd, EXP, userType, Mazo)
-    const nuevo = usuarios.add(usuario)
+async function add(req: Request, res: Response){
+    const {idUser, nick, nomUser, passwd, mail} = req.body.data
+    const usuario = new Usuario (idUser, nick, nomUser, passwd, mail)
+    const nuevo = await usuarios.add(usuario)
     return res.status(201).send({message:'Personaje creado Exitosamente'})
 }
 
-function update(req: Request, res: Response){
+async function update(req: Request, res: Response){
     req.body.data.id = req.params.id
-    const actualizado = usuarios.update(req.body.data)
+    const actualizado = await usuarios.update(req.body.data)
 
     if(!actualizado){
         return res.status(404).send({message: "Personaje no Encontrado"})
@@ -49,9 +47,9 @@ function update(req: Request, res: Response){
     }
 }
 
- function remove(req: Request, res: Response){
+ async function remove(req: Request, res: Response){
     const id = req.params.id
-    const borrado = usuarios.delete({id})
+    const borrado = await usuarios.delete({id})
 
     if(!borrado){
         return res.status(404).send({message: "Personaje no Encontrado"})

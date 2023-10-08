@@ -1,45 +1,46 @@
 import { Repository } from "../../shared/repository.js";
 import { Partida } from "./partida.entity.js";
+import { db } from "../../shared/db/conn.js";
 
-const partidas =[
+
+const partidasArray =[
     new Partida(
         '00',
-        '2023-09-14',
-        'Finished',
-        15000,
-        'Kyoto Realms'
+        '2023-09-14'
     )
 ]
 
+const sessions = db.collection<Partida>('sessions')
+
 export class SessionRepository implements Repository<Partida>{
-    public findAll(): Partida[] | undefined {
-        return partidas
+    public async findAll(): Promise<Partida[] | undefined> {
+        return partidasArray
     }
 
-    public findOne(item: { id: string; }): Partida | undefined {
-        return partidas.find((partida) => partida.idSession === item.id)
+    public async findOne(item: { id: string; }): Promise<Partida | undefined> {
+        return partidasArray.find((partida) => partida.idSession === item.id)
     }
 
-    public add(item: Partida): Partida | undefined {
-        partidas.push(item)
+    public async add(item: Partida): Promise<Partida | undefined> {
+        partidasArray.push(item)
         return item
     }
 
-    public update(item: Partida): Partida | undefined {
-        const partidaId = partidas.findIndex((partida) => partida.idSession === item.idSession)
+    public async update(item: Partida): Promise<Partida | undefined> {
+        const partidaId = partidasArray.findIndex((partida) => partida.idSession === item.idSession)
 
         if(partidaId !== -1){
-            partidas.splice(partidaId, 1, item)
+            partidasArray.splice(partidaId, 1, item)
         }
         
-        return partidas[partidaId]
+        return partidasArray[partidaId]
     }
 
-    public delete(item: { id: string; }): Partida | undefined {
-        const partidaId = partidas.findIndex((partida) => partida.idSession === item.id)
+    public async delete(item: { id: string; }): Promise<Partida | undefined> {
+        const partidaId = partidasArray.findIndex((partida) => partida.idSession === item.id)
         if(partidaId !== -1){
-            const borrado = partidas[partidaId]
-            partidas.splice(partidaId, 1)
+            const borrado = partidasArray[partidaId]
+            partidasArray.splice(partidaId, 1)
             return borrado
         }
     }

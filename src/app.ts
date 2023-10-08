@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from 'express'
-import { PersRouter } from './classes/personaje/personaje.routes.js'
 import { UserRouter } from './classes/usuario/usuario.routes.js'
 import { SessionRouter } from './classes/partida/partida.routes.js'
 import { CardRouter } from './classes/carta/carta.routes.js'
@@ -7,7 +6,6 @@ import { CardRouter } from './classes/carta/carta.routes.js'
 const app = express()
 app.use(express.json())
 
-app.use('/api/personajes', PersRouter)
 app.use('/api/usuarios', UserRouter)
 app.use('/api/partidas', SessionRouter)
 app.use('/api/cartas', CardRouter)

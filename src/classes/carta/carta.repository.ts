@@ -1,45 +1,46 @@
 import { Repository } from "../../shared/repository.js";
-import { Carta} from "./carta.entity.js";
+import { Note} from "./carta.entity.js";
+import { db } from "../../shared/db/conn.js";
 
-const cartas = [
-    new Carta(
+
+const notesArray = [
+    new Note(
         '01',
-        'Toma, los tengo yo',
         'Oh, que veo aqui colega, si no es mas que el mismisimo Shadex quien te ofrece sus esmeraldas en señal de amistad, aunque todavia sois enemigos: +1 ATK -2 EVD',
-        '1',
-        'Buff'
     )
 ]
 
-export class CartaRepository implements Repository<Carta>{
-    public findAll(): Carta[] | undefined {
-        return cartas
+const notes = db.collection<Note>('notas')
+
+export class NoteRepository implements Repository<Note>{
+    public async findAll(): Promise<Note[] | undefined> {
+        return await notes.find().toArray()
     }
 
-    public findOne(item: { id: string; }): Carta | undefined {
-        return cartas.find((carta) => carta.idCarta === item.id)
+    public async findOne(item: { id: string; }): Promise<Note | undefined> {
+        return await notesArray.find((carta) => carta.idItem === item.id)
     }
 
-    public add(item: Carta): Carta | undefined {
-        cartas.push(item)
+    public async add(item: Note): Promise<Note | undefined> {
+        await notesArray.push(item)
         return item
     }
 
-    public update(item: Carta): Carta | undefined {
-        const cartaId = cartas.findIndex((carta) => carta.idCarta === item.idCarta)
+    public async update(item: Note): Promise<Note | undefined> {
+        const noteId = await notesArray.findIndex((carta) => carta.idItem === item.idItem)
 
-        if(cartaId !== -1){
-            cartas.splice(cartaId, 1, item)
+        if(noteId !== -1){
+            notesArray.splice(noteId, 1, item)
         }
         
-        return cartas[cartaId]
+        return notesArray[noteId]
     }
 
-    public delete(item: { id: string; }): Carta | undefined {
-        const cartaId = cartas.findIndex((carta) => carta.idCarta === item.id)
+    public async delete(item: { id: string; }): Promise<Note | undefined> {
+        const cartaId = await notesArray.findIndex((carta) => carta.idItem === item.id)
         if(cartaId !== -1){
-            const borrado = cartas[cartaId]
-            cartas.splice(cartaId, 1)
+            const borrado = notesArray[cartaId]
+            notesArray.splice(cartaId, 1)
             return borrado
         }
     }
