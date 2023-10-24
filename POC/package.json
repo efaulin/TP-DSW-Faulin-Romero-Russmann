@@ -1,0 +1,27 @@
+{
+  "name": "nodecron_taskscheduler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efaulin/TP-DSW-Faulin-Romero-Russmann.git#POC"
+  },
+  "keywords": [
+    "POC",
+    "Node-Cron"
+  ],
+  "author": "alan romero, octavio russmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/efaulin/TP-DSW-Faulin-Romero-Russmann/issues"
+  },
+  "homepage": "https://github.com/efaulin/TP-DSW-Faulin-Romero-Russmann/tree/POC#readme",
+  "dependencies": {
+    "node-cron": "^3.0.2"
+  }
+}
