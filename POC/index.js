@@ -1,5 +1,6 @@
 import node from "node-cron";
 import exec from "child_process";
+import {appendFile, rm} from "fs/promises";
 
 // ┌────────────── segundo (opcional)
 // │ ┌──────────── minuto
@@ -96,6 +97,26 @@ node.schedule(
       }
       console.log(stderr);
     });
+  },
+  { timezone: "America/Buenos_Aires" }, {scheduled : false}
+);
+
+const db = [
+" Carlos Lopez ", 
+" Maria Bustamante ",
+" Pedro Acevedo "
+];
+
+node.schedule(
+  "*/5 * * * * *",
+  async () => {
+    try{
+      await rm('backup.txt');
+    } catch {
+
+    }
+    appendFile('backup.txt', db);
+    console.log("Back-Up Realizado");  
   },
   { timezone: "America/Buenos_Aires" }
 );
