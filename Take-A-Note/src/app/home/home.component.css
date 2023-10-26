@@ -1,0 +1,51 @@
+#home {
+  width: 576px;
+  height: 1024px;
+  position: relative;
+  margin: auto;
+}
+#postit {
+  width: 500px;
+  height: 500px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: absolute;
+  left: 38px;
+  right: 38px;
+  top: 262px;
+}
+#paper {
+  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+}
+#fold {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  position: absolute;
+  left: 400px;
+  bottom: 400px;
+}
+span {
+  color: #000;
+  font-family: Grape Nuts;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  top: 64px;
+  left: 142px;
+  right: 143px;
+}
+button {
+  color: #000;
+  font-family: Grape Nuts;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  top: 231px;
+  left: 141px;
+  right: 142px;
+}
