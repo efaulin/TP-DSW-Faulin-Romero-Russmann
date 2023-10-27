@@ -88,6 +88,9 @@
   top: 554px;
   left: 138px;
 }
+#passrecover:hover {
+  filter: brightness(1.5);
+}
 input[type="submit"] {
   width: 500px;
   height: 103px;
@@ -106,6 +109,9 @@ input[type="submit"] {
   font-weight: 400;
   line-height: normal;
 }
+input[type="submit"]:hover {
+  filter: brightness(1.05) drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
 #register {
   color: #583a9d;
   text-align: center;
@@ -117,4 +123,7 @@ input[type="submit"] {
   position: absolute;
   top: 735px;
   left: 209px;
+}
+#register:hover {
+  filter: brightness(1.5);
 }

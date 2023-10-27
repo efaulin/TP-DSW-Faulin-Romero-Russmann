@@ -68,8 +68,8 @@
       id="password"
       placeholder="Ingrese Contraseña"
     />
-    <span id="passrecover">Olvido su contraseña?</span>
+    <a id="passrecover" [routerLink]="['../recovery']">Olvido su contraseña?</a>
     <input type="submit" value="Iniciar Sesión" />
-    <span id="register">Registrarse</span>
+    <a id="register" [routerLink]="['../register']">Registrarse</a>
   </form>
 </div>

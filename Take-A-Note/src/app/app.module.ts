@@ -8,6 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'recovery', component: RecoveryComponent },
+  { path: 'register', component: RegisterComponent },
+];
 
 @NgModule({
   declarations: [
@@ -16,13 +24,10 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     LoginComponent,
     RegisterComponent,
     RecoveryComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
