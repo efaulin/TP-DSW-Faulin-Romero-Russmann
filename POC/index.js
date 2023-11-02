@@ -1,6 +1,6 @@
 import node from "node-cron";
 import exec from "child_process";
-import { readFile, appendFile, rm } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 
 // ┌────────────── segundo (opcional)
 // │ ┌──────────── minuto
@@ -109,8 +109,7 @@ node.schedule(
   async () => {
     try {
       const data = await readFile("bd.txt", { encoding: "utf8" });
-      await rm("backup.txt");
-      appendFile("backup.txt", data);
+      writeFile("backup.txt", data);
       console.log("Back-Up Realizado");
     } catch (err) {
       console.log(err);
