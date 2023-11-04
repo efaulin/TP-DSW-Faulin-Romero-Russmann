@@ -1,14 +1,7 @@
 import { Repository } from "../../shared/repository.js";
 import { Note} from "./carta.entity.js";
 import { db } from "../../shared/db/conn.js";
-
-
-const notesArray = [
-    new Note(
-        '01',
-        'Oh, que veo aqui colega, si no es mas que el mismisimo Shadex quien te ofrece sus esmeraldas en señal de amistad, aunque todavia sois enemigos: +1 ATK -2 EVD',
-    )
-]
+import { ObjectId } from "mongodb";
 
 const notes = db.collection<Note>('notas')
 
@@ -18,30 +11,23 @@ export class NoteRepository implements Repository<Note>{
     }
 
     public async findOne(item: { id: string; }): Promise<Note | undefined> {
-        return await notesArray.find((carta) => carta.idItem === item.id)
+        const _id = new ObjectId(item.id);
+        return (await notes.findOne({_id})) || undefined
     }
 
     public async add(item: Note): Promise<Note | undefined> {
-        await notesArray.push(item)
+        item._id=(await notes.insertOne(item)).insertedId
         return item
     }
 
     public async update(item: Note): Promise<Note | undefined> {
-        const noteId = await notesArray.findIndex((carta) => carta.idItem === item.idItem)
-
-        if(noteId !== -1){
-            notesArray.splice(noteId, 1, item)
-        }
-        
-        return notesArray[noteId]
+        const {idItem, ... sanitizeCardInput} = item
+        const _id = new ObjectId(idItem)
+        return await notes.findOneAndUpdate({_id}, {$set: sanitizeCardInput}, {returnDocument: 'after'}) || undefined
     }
 
     public async delete(item: { id: string; }): Promise<Note | undefined> {
-        const cartaId = await notesArray.findIndex((carta) => carta.idItem === item.id)
-        if(cartaId !== -1){
-            const borrado = notesArray[cartaId]
-            notesArray.splice(cartaId, 1)
-            return borrado
-        }
+        const _id = new ObjectId(item.id)
+        return (await notes.findOneAndDelete({_id})) || undefined
     }
 }
