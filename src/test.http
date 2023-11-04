@@ -1,23 +1,19 @@
 ### get personajes
-GET http://localhost:3000/api/personajes
+GET http://localhost:3000/api/usuarios
 
 ### get personaje con un determinado id
 GET http://localhost:3000/api/personajes/03
 
 ### añadir personajes
-POST http://localhost:3000/api/personajes/ 
+POST http://localhost:3000/api/usuarios/ 
 Content-Type: application/json
 
 {
-    "idPers":"03",
-    "nomPers": "Pedro Aznar",
-    "desc":"El amo todopoderoso indiscutido dentro de la galaxia de las voces",
-    "HP":500,
-    "ATK":54,
-    "EVD":32,
-    "DEF":30,
-    "VD":22,
-    "REC":11
+    "idUser":"03",
+    "nick": "Pedro Aznar",
+    "nomUser":"pepe.aznr",
+    "passwd": "123445",
+    "mail": "pedro@aznar.com"
 }
 
 ### modificar un personaje
