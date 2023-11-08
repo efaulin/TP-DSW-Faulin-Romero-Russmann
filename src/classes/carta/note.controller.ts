@@ -1,13 +1,16 @@
 import { Request, Response, NextFunction } from "express"
-import { NoteRepository } from "./carta.repository.js"
-import { Note } from "./carta.entity.js"
+import { NoteRepository } from "./note.repository.js"
+import { Note } from "./note.entity.js"
 
 const notes = new NoteRepository()
 
 function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
         idItem: req.body.idItem,
-        desc: req.body.desc
+        idUser: req.body.idUser,
+        idSession: req.body.idSession,
+        desc: req.body.desc,
+        position: req.body.position
     }
 
     next()
@@ -19,17 +22,17 @@ async function findAll(_: Request, res: Response){
 
 async function findOne(req: Request, res: Response){
     const id = req.params.id
-    const carta = await notes.findOne({id})
-    if(!carta){
+    const note = await notes.findOne({id})
+    if(!note){
         return res.status(404).send({message:'note Not Found'})
     }
-    res.json(carta)
+    res.json(note)
 }
 
 async function add(req: Request, res: Response){
-    const {idItem, desc} = req.body.data
-    const carta = new Note (idItem, desc)
-    const nuevo = await notes.add(carta)
+    const {idItem, idUser, idSession, desc, position} = req.body.data
+    const note = new Note (idItem, idUser, idSession, desc, position)
+    const nuevo = await notes.add(note)
     return res.status(201).send({message:'Nota creada Exitosamente'})
 }
 

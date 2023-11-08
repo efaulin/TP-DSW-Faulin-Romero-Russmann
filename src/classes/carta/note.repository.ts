@@ -1,5 +1,5 @@
 import { Repository } from "../../shared/repository.js";
-import { Note} from "./carta.entity.js";
+import { Note} from "./note.entity.js";
 import { db } from "../../shared/db/conn.js";
 import { ObjectId } from "mongodb";
 
