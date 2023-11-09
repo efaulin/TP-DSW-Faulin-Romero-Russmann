@@ -9,12 +9,16 @@ import { RegisterComponent } from './register/register.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LoggedHomeComponent } from './logged-home/logged-home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'recovery', component: RecoveryComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'password-change', component: PasswordChangeComponent },
+  { path: 'logged-home', component: LoggedHomeComponent },
 ];
 
 @NgModule({
@@ -25,8 +29,14 @@ const appRoutes: Routes = [
     RegisterComponent,
     RecoveryComponent,
     PasswordChangeComponent,
+    LoggedHomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
