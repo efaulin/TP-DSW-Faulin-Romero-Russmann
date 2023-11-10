@@ -57,4 +57,13 @@ async function remove(req: Request, res: Response){
     }
 }
 
-export {sanitizeCardInput, findAll, findOne, add, update, remove}
+async function findBySession(req: Request, res: Response){
+    const id = req.params.id
+    const note = await notes.findBySession({id})
+    if(!note){
+        return res.status(404).send({message:'Nota no Encontrada'})
+    }
+    res.json(note)
+}
+
+export {sanitizeCardInput, findAll, findOne, add, update, remove, findBySession}
