@@ -11,6 +11,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedHomeComponent } from './logged-home/logged-home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { JoinboardComponent } from './joinboard/joinboard.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'password-change', component: PasswordChangeComponent },
   { path: 'logged-home', component: LoggedHomeComponent },
+  { path: 'joinboard', component: JoinboardComponent },
 ];
 
 @NgModule({
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
     RecoveryComponent,
     PasswordChangeComponent,
     LoggedHomeComponent,
+    JoinboardComponent,
   ],
   imports: [
     BrowserModule,

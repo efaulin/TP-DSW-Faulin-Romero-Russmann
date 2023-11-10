@@ -1,30 +1,117 @@
 <div id="logged-home">
   <span id="spanlogged-home">Take-A-Note</span>
-  <div id="createboard">
-    <svg
-      id="paper1"
-      xmlns="http://www.w3.org/2000/svg"
-      width="540"
-      height="143"
-      viewBox="0 0 540 143"
-      fill="none"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M491.5 16H20V119H520V44.5L491.5 16Z"
-        fill="#9FFFF9"
-      />
-    </svg>
-    <svg
-      id="fold1"
-      xmlns="http://www.w3.org/2000/svg"
-      width="29"
-      height="29"
-      viewBox="0 0 29 29"
-      fill="none"
-    >
-      <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
-    </svg>
+  <div id="menu">
+    <div id="createboard">
+      <svg
+        class="paper"
+        xmlns="http://www.w3.org/2000/svg"
+        width="500"
+        height="103"
+        viewBox="0 0 500 103"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M471.5 0H0V103H500V28.5L471.5 0Z"
+          fill="#9FFFF9"
+        />
+      </svg>
+      <svg
+        class="fold"
+        xmlns="http://www.w3.org/2000/svg"
+        width="29"
+        height="29"
+        viewBox="0 0 29 29"
+        fill="none"
+      >
+        <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
+      </svg>
+      <span>Crear tablero</span>
+    </div>
+    <div id="myboards">
+      <svg
+        class="paper"
+        xmlns="http://www.w3.org/2000/svg"
+        width="500"
+        height="103"
+        viewBox="0 0 500 103"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M471.5 0H0V103H500V28.5L471.5 0Z"
+          fill="#9FFFF9"
+        />
+      </svg>
+      <svg
+        class="fold"
+        xmlns="http://www.w3.org/2000/svg"
+        width="29"
+        height="29"
+        viewBox="0 0 29 29"
+        fill="none"
+      >
+        <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
+      </svg>
+      <span>Mis tableros</span>
+    </div>
+    <div id="joinboard" [routerLink]="['../joinboard']">
+      <svg
+        class="paper"
+        xmlns="http://www.w3.org/2000/svg"
+        width="500"
+        height="103"
+        viewBox="0 0 500 103"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M471.5 0H0V103H500V28.5L471.5 0Z"
+          fill="#9FFFF9"
+        />
+      </svg>
+      <svg
+        class="fold"
+        xmlns="http://www.w3.org/2000/svg"
+        width="29"
+        height="29"
+        viewBox="0 0 29 29"
+        fill="none"
+      >
+        <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
+      </svg>
+      <span>Unirse a tablero</span>
+    </div>
+    <div id="myaccount">
+      <svg
+        class="paper"
+        xmlns="http://www.w3.org/2000/svg"
+        width="500"
+        height="103"
+        viewBox="0 0 500 103"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M471.5 0H0V103H500V28.5L471.5 0Z"
+          fill="#9FFFF9"
+        />
+      </svg>
+      <svg
+        class="fold"
+        xmlns="http://www.w3.org/2000/svg"
+        width="29"
+        height="29"
+        viewBox="0 0 29 29"
+        fill="none"
+      >
+        <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
+      </svg>
+      <span>Mi cuenta</span>
+    </div>
   </div>
 </div>
