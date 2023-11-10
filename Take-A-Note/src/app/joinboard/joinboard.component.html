@@ -4,9 +4,8 @@
     <div
       class="board"
       *ngFor="let board of boards"
-      (click)="sendboardid(board.sessionId)"
     >
-      <span class="boardname">{{ board.sessionName }}</span>
+      <button class="boardname" (click)="sendboardid(board.sessionId)" [routerLink]="['../boardnotes']">{{ board.sessionName }}</button>
     </div>
   </div>
 </div>

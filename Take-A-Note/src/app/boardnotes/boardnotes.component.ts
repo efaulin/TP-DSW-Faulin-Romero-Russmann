@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Note } from '../classes/noteclass';
 import { BoardNotesService } from '../board-notes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-boardnotes',
@@ -19,10 +20,13 @@ export class BoardnotesComponent implements OnInit {
   ngOnInit(): void {
     this.boardnotes.idboard.subscribe((id) => {
       this.rest
-        .get('http://localhost:3000/api/tablas/' + id)
+        .get(`http://localhost:3000/api/notas/buscar/${id}`)
         .subscribe((res) => {
+          console.log(res);
           this.notes = Object.values(res);
         });
+      console.log(id);
+      //console.log(this.notes);
     });
   }
 }
