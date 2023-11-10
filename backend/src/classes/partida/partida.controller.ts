@@ -28,8 +28,8 @@ async function findOne(req: Request, res: Response){
 }
 
 async function add(req: Request, res: Response){
-    const {sessionId, sessionDate, sessionName} = req.body.data
-    const partida = new Tablero (sessionId, sessionDate, sessionName)
+    const {sessionName} = req.body.data
+    const partida = new Tablero (sessionName)
     const nuevo = await tableros.add(partida)
     return res.status(201).send({message:'Tablero creado Exitosamente'})
 }

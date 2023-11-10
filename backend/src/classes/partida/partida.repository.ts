@@ -16,6 +16,8 @@ export class SessionRepository implements Repository<Tablero>{
     }
 
     public async add(item: Tablero): Promise<Tablero | undefined> {
+        item.sessionId = (await (await sessions.find().toArray()).length.toString())
+        item.sessionDate = new Date(Date.now()).toDateString()
         item._id=(await sessions.insertOne(item)).insertedId
         return item
     }
