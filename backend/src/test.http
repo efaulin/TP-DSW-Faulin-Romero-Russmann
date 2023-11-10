@@ -1,32 +1,30 @@
 ### get personajes
-GET http://localhost:3000/api/usuarios
+GET http://localhost:3000/api/tablas/buscar/Tablero
+
+GET http://localhost:3000/api/tablas/buscar/
 
 ### get personaje con un determinado id
-GET http://localhost:3000/api/usuarios/03
+GET http://localhost:3000/api/tablas/abcdef123456abcdef123456
 
 ### añadir personajes
-POST http://localhost:3000/api/usuarios/ 
+POST http://localhost:3000/api/tablas/ 
 Content-Type: application/json
 
 {
-    "idUser":"04",
-    "nick": "Pedro Aznar",
-    "nomUser":"pepe.aznr",
-    "passwd": "123445",
-    "mail": "pedro@aznar.com"
+    "sessionId": "abcdef123456abcdef123456",
+    "sessionDate": "2023-11-09",
+    "sessionName": "Tablero de Carlos"
 }
 
 ### modificar un personaje
-PUT http://localhost:3000/api/usuarios/04
+PUT http://localhost:3000/api/tablas/abcdef123456abcdef123456
 Content-Type: application/json
 
 {
-    "idUser":"04",
-    "nick": "Pedro Aznar",
-    "nomUser":"pepe.aznr",
-    "passwd": "abcde",
-    "mail": "pedro@aznar.com"
+    "sessionId": "abcdef123456abcdef123456",
+    "sessionDate": "2023-10-09",
+    "sessionName": "Tablero de Carlos"
 }
 
 ### borrar
-DELETE http://localhost:3000/api/personajes/03
+DELETE http://localhost:3000/api/tablas/abcdef123456abcdef123456
