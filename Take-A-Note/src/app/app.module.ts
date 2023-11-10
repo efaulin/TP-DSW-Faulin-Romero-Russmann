@@ -12,6 +12,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoggedHomeComponent } from './logged-home/logged-home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JoinboardComponent } from './joinboard/joinboard.component';
+import { CreateboardComponent } from './createboard/createboard.component';
+import { FormsModule } from '@angular/forms';
+import { BoardnotesComponent } from './boardnotes/boardnotes.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +24,8 @@ const appRoutes: Routes = [
   { path: 'password-change', component: PasswordChangeComponent },
   { path: 'logged-home', component: LoggedHomeComponent },
   { path: 'joinboard', component: JoinboardComponent },
+  { path: 'createboard', component: CreateboardComponent },
+  { path: 'boardnotes', component: BoardnotesComponent },
 ];
 
 @NgModule({
@@ -33,12 +38,15 @@ const appRoutes: Routes = [
     PasswordChangeComponent,
     LoggedHomeComponent,
     JoinboardComponent,
+    CreateboardComponent,
+    BoardnotesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

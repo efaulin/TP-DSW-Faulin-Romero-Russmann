@@ -1,0 +1,12 @@
+<div id="createboard">
+  <span id="spancreateboard">Crear tablero</span>
+  <form>
+    <input
+      [(ngModel)]="boardname"
+      type="text"
+      id="boardname"
+      placeholder="Ingrese nombre del tablero"
+    />
+    <input type="submit" value="Crear" (click)="createboard()" />
+  </form>
+</div>
