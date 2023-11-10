@@ -30,4 +30,8 @@ export class NoteRepository implements Repository<Note>{
         //const _id = new ObjectId(item.id)
         return (await notes.findOneAndDelete({idItem: item.id})) || undefined
     }
+
+    public async findBySession(item :{ id:string }): Promise<Note[] | undefined> {
+        return await notes.find({idSession: item.id}).toArray()
+    }
 }
