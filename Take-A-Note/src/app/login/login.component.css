@@ -1,0 +1,129 @@
+#login {
+  width: 576px;
+  height: 1024px;
+  position: relative;
+  margin: auto;
+}
+#spanlogin {
+  color: #000;
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  left: 222px;
+  top: 55px;
+}
+#tape1 {
+  position: absolute;
+  top: 222.13px;
+  left: 7.5px;
+  z-index: 1;
+}
+#tape2 {
+  position: absolute;
+  top: 250px;
+  right: 25.85px;
+  padding-top: 14px;
+  z-index: 1;
+}
+#user {
+  width: 480px;
+  height: 103px;
+  flex-shrink: 0;
+  background: #fff29c;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  border: 0;
+  position: absolute;
+  top: 262px;
+  left: 38px;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
+}
+#tape3 {
+  position: absolute;
+  top: 356.46px;
+  left: 20.35px;
+  margin-top: 44px;
+  z-index: 1;
+}
+#tape4 {
+  position: absolute;
+  top: 356.46px;
+  right: 21.35px;
+  margin-top: 44px;
+  z-index: 1;
+}
+#password {
+  width: 480px;
+  height: 103px;
+  flex-shrink: 0;
+  background: #fff29c;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  border: 0;
+  position: absolute;
+  top: 415px;
+  left: 38px;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
+}
+#passrecover {
+  color: #583a9d;
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  position: absolute;
+  top: 554px;
+  left: 138px;
+}
+#passrecover:hover {
+  filter: brightness(1.5);
+}
+input[type="submit"] {
+  width: 500px;
+  height: 103px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #fca89d;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  border: 0;
+  position: absolute;
+  top: 612px;
+  left: 38px;
+  color: #000;
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+input[type="submit"]:hover {
+  filter: brightness(1.05) drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+#register {
+  color: #583a9d;
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  position: absolute;
+  top: 735px;
+  left: 209px;
+}
+#register:hover {
+  filter: brightness(1.5);
+}
