@@ -1,5 +1,5 @@
 ### get personajes
-GET http://localhost:3000/api/tablas/buscar/Tablero
+GET http://localhost:3000/api/notas/
 
 GET http://localhost:3000/api/tablas/buscar/
 
@@ -7,24 +7,24 @@ GET http://localhost:3000/api/tablas/buscar/
 GET http://localhost:3000/api/tablas/abcdef123456abcdef123456
 
 ### añadir personajes
-POST http://localhost:3000/api/tablas/ 
+POST http://localhost:3000/api/notas/21
 Content-Type: application/json
 
 {
-    "sessionId": "abcdef123456abcdef123456",
-    "sessionDate": "2023-11-09",
-    "sessionName": "Tablero de Carlos"
+    "desc": "Anotar esto muy importante",
+    "position": 2
 }
 
 ### modificar un personaje
-PUT http://localhost:3000/api/tablas/abcdef123456abcdef123456
+PUT http://localhost:3000/api/notas/02
 Content-Type: application/json
 
 {
-    "sessionId": "abcdef123456abcdef123456",
-    "sessionDate": "2023-10-09",
-    "sessionName": "Tablero de Carlos"
+    "idItem": "02",
+    "idSession": "2",
+    "desc": "Anotar esto muy importante",
+    "position": 2
 }
 
 ### borrar
-DELETE http://localhost:3000/api/tablas/abcdef123456abcdef123456
+DELETE http://localhost:3000/api/notas/11

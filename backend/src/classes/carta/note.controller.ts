@@ -29,8 +29,9 @@ async function findOne(req: Request, res: Response){
 }
 
 async function add(req: Request, res: Response){
-    const {idItem, idSession, desc, position} = req.body.data
-    const note = new Note (idItem, idSession, desc, position)
+    const idSession = req.params.id
+    const { desc, position} = req.body.data
+    const note = new Note (desc, position, idSession)
     const nuevo = await notes.add(note)
     return res.status(201).send({message:'Nota creada Exitosamente'})
 }

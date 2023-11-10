@@ -16,6 +16,7 @@ export class NoteRepository implements Repository<Note>{
     }
 
     public async add(item: Note): Promise<Note | undefined> {
+        item.idItem = (await (await notes.find().toArray()).length.toString())
         item._id=(await notes.insertOne(item)).insertedId
         return item
     }
