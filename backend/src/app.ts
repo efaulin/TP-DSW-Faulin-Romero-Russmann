@@ -3,9 +3,11 @@ import { UserRouter } from './classes/usuario/usuario.routes.js'
 import { SessionRouter } from './classes/partida/partida.routes.js'
 import { NoteRouter } from './classes/carta/note.routes.js'
 import { LogRouter } from './classes/logs/log.routes.js'
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/usuarios', UserRouter)
 app.use('/api/tablas', SessionRouter)

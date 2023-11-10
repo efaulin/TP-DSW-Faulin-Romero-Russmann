@@ -1,47 +1,64 @@
 import { Request, Response, NextFunction } from "express"
 import { SessionRepository } from "./partida.repository.js"
-import { Partida } from "./partida.entity.js"
+import { Tablero } from "./partida.entity.js"
 
-const partidas = new SessionRepository()
+const tableros = new SessionRepository()
 
 function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
-        idSession: req.body.idSession,
-        sessionDate: req.body.sessionDate
+        sessionId: req.body.sessionId,
+        sessionDate: req.body.sessionDate,
+        sessionName: req.body.sessionName
     }
 
     next()
 }
 
 async function findAll(req: Request, res: Response){
-    res.json(await partidas.findAll())
+    res.json(await tableros.findAll())
 }
 
 async function findOne(req: Request, res: Response){
     const id = req.params.id
-    const partida = await partidas.findOne({id})
+    const partida = await tableros.findOne({id})
     if(!partida){
-        return res.status(404).send({message:'Partida Not Found'})
+        return res.status(404).send({message:'Tablero Not Found'})
     }
     res.json(partida)
 }
 
 async function add(req: Request, res: Response){
-    const {idSession, sessionDate} = req.body.data
-    const partida = new Partida (idSession, sessionDate)
-    const nuevo = await partidas.add(partida)
-    return res.status(201).send({message:'Partida creada Exitosamente'})
+    const {sessionId, sessionDate, sessionName} = req.body.data
+    const partida = new Tablero (sessionId, sessionDate, sessionName)
+    const nuevo = await tableros.add(partida)
+    return res.status(201).send({message:'Tablero creado Exitosamente'})
 }
 
 async function update(req: Request, res: Response){
-    req.body.data.id = req.params.id
-    const actualizado = await partidas.update(req.body.data)
+    req.body.data.sessionId = req.params.id
+    const actualizado = await tableros.update(req.body.data)
 
     if(!actualizado){
-        return res.status(404).send({message: "Partida no Encontrada"})
+        return res.status(404).send({message: "Tablero no Encontrado"})
     }else{
-        return res.status(200).send({message: "Datos de la partida actualizados correctamente"})
+        return res.status(200).send({message: "Datos del Tablero actualizados correctamente"})
     }
 }
 
-export {sanitizeSessionInput, findAll, findOne, add, update}
+async function remove(req: Request, res: Response){
+    const id = req.params.id
+    const borrado = await tableros.delete({id})
+
+    if(!borrado){
+        return res.status(404).send({message: "Tablero no Encontrado"})
+    }else{
+        return res.status(200).send({message: "Tablero borrado correctamente"})
+    }
+}
+
+async function findByDesc(req: Request, res: Response){
+    const desc = req.params.desc
+    res.json(await tableros.findByDesc({desc}))
+}
+
+export {sanitizeSessionInput, findAll, findOne, add, update, remove, findByDesc}

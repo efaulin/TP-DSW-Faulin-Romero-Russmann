@@ -1,9 +1,10 @@
 import { ObjectId } from "mongodb";
 
-export class Partida{
+export class Tablero{
     constructor(
-        public idSession: string,
+        public sessionId: string,
         public sessionDate: string,
+        public sessionName: string,
         public _id ?: ObjectId
     )
     {}

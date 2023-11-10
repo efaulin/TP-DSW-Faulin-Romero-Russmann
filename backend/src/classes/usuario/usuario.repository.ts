@@ -12,7 +12,7 @@ export class UserRepository implements Repository<Usuario>{
 
     public async findOne(item: { id: string; }): Promise<Usuario | undefined> {
         const _id = new ObjectId(item.id);
-        return (await usuarios.findOne({_id})) || undefined
+        return (await usuarios.findOne({"idUser": item.id})) || undefined
     }
 
     public async add(item: Usuario): Promise<Usuario | undefined> {
