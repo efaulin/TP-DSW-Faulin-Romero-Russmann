@@ -19,10 +19,12 @@ export class BoardnotesComponent implements OnInit {
   ngOnInit(): void {
     this.boardnotes.idboard.subscribe((id) => {
       this.rest
-        .get('http://localhost:3000/api/tablas/' + id)
+        .get(`http://localhost:3000/api/notas/buscar/${id}`)
         .subscribe((res) => {
-          this.notes = Object.values(res);
-        });
+          console.log(JSON.parse(JSON.stringify(res)));
+          this.notes = JSON.parse(JSON.stringify(res))});
+        console.log(id);
+        //console.log(this.notes);
     });
   }
 }
