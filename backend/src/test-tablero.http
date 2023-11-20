@@ -1,0 +1,29 @@
+### findAll
+GET http://localhost:3000/api/tablas
+
+### findOne
+GET http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9
+
+### findByDesc
+GET http://localhost:3000/api/tablas/buscar/pap
+
+### add
+POST http://localhost:3000/api/tablas
+Content-Type: application/json
+
+{
+    "name": "El tablero del papu",
+    "desc": "un tablero donde se anotan las cosas del papu"
+}
+
+### update
+PUT http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9
+Content-Type: application/json
+
+{
+    "name": "El tablero del papu",
+    "desc": "un tablero donde se anotan las cosas que no son del papu"
+}
+
+### delete
+DELETE http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9

@@ -1,13 +1,12 @@
 import { Request, Response, NextFunction } from "express"
-import { NoteRepository } from "./note.repository.js"
+import { orm } from "../../shared/db/orm.js"
 import { Note } from "./note.entity.js"
 
-const notes = new NoteRepository()
+const em = orm.em
 
-function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
+function sanitizeNoteInput(req: Request, res: Response, next: NextFunction){
     req.body.data={
-        idItem: req.body.idItem,
-        idSession: req.body.idSession,
+        tablero: req.body.tablero,
         desc: req.body.desc,
         position: req.body.position
     }
@@ -16,55 +15,64 @@ function sanitizeCardInput(req: Request, res: Response, next: NextFunction){
 }
 
 async function findAll(_: Request, res: Response){
-    res.json(await notes.findAll())
+    try{
+        const notas = await em.find(Note, {}, {populate: ['tablero']})
+        res.status(200).json(notas)
+    } catch (error: any){
+        res.status(500).json({message: 'Error!'})
+    }
 }
 
 async function findOne(req: Request, res: Response){
-    const id = req.params.id
-    const note = await notes.findOne({id})
-    if(!note){
-        return res.status(404).send({message:'Nota no Encontrada'})
+    try{
+        const id: any = req.params.id
+    const nota = await em.findOneOrFail(Note, { id: id }, {populate: ['tablero']})
+    res.status(200).json(nota)
+    } catch (error: any){
+        res.status(404).send({message:'Nota Not Found'})
     }
-    res.json(note)
 }
 
 async function add(req: Request, res: Response){
-    const idSession = req.params.id
-    const { desc, position} = req.body.data
-    const note = new Note (desc, position, idSession)
-    const nuevo = await notes.add(note)
-    return res.status(201).send({message:'Nota creada Exitosamente'})
+    try{
+        const nota = em.create(Note, req.body.sanitizeNoteInput)
+        await em.flush()
+        res.status(201).send({message:'Nota creada Exitosamente'})
+    } catch (error: any){
+        res.status(500).json(error.message)
+    }
 }
 
 async function update(req: Request, res: Response){
-    req.body.data.idItem = req.params.id
-    const actualizado = await notes.update(req.body.data)
-
-    if(!actualizado){
-        return res.status(404).send({message: "Nota no Encontrada"})
-    }else{
+    try{
+        const id: any = req.params.id
+        const nota = em.getReference(Note, id)
+        em.assign(nota, req.body)
+        em.flush()
         return res.status(200).send({message: "Datos de la nota actualizados correctamente"})
+    } catch(error: any) {
+        return res.status(404).send({message: "Nota no Encontrada"})
     }
 }
 
 async function remove(req: Request, res: Response){
-    const id = req.params.id
-    const borrado = await notes.delete({id})
-
-    if(!borrado){
-        return res.status(404).send({message: "Nota no Encontrada"})
-    }else{
-        return res.status(200).send({message: "Nota borrada correctamente"})
+    try{
+        const id: any = req.params.id
+        const nota = em.getReference(Note, id)
+        await em.removeAndFlush(nota)
+        res.status(200).send({message: "Nota borrada correctamente"})
+    } catch(error: any){
+        res.status(404).send({message: "Nota no Encontrada"})
     }
 }
 
-async function findBySession(req: Request, res: Response){
-    const id = req.params.id
-    const note = await notes.findBySession({id})
-    if(!note){
-        return res.status(404).send({message:'Nota no Encontrada'})
+async function findBySession(req: Request, res: Response){ //implementar desde el tablero
+    try{
+        const notas = await em.find(Note, {})
+        res.status(200).json(notas)
+    } catch (error: any){
+        res.status(500).json({message: 'Error!'})
     }
-    res.json(note)
 }
 
-export {sanitizeCardInput, findAll, findOne, add, update, remove, findBySession}
+export {sanitizeNoteInput, findAll, findOne, add, update, remove, findBySession}
