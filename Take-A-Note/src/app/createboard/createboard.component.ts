@@ -15,11 +15,7 @@ export class CreateboardComponent implements OnInit {
   ngOnInit(): void {}
 
   public createboard() {
-    const board = new Board(
-      '2',
-      new Date().toLocaleDateString(), //ver los primeros dos parametros
-      this.boardname
-    );
+    const board = new Board(this.boardname);
     this.rest
       .post('http://localhost:3000/api/tablas', board)
       .subscribe((res) => {

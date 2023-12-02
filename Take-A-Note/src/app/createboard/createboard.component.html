@@ -8,6 +8,13 @@
       name="boardname"
       placeholder="Ingrese nombre del tablero"
     />
-    <input type="submit" value="Crear" (click)="createboard()" />
+    <button
+      type="button"
+      (click)="createboard()"
+      [routerLink]="['../logged-home']"
+    >
+      <!--ver si usar submit en el type-->
+      Crear
+    </button>
   </form>
 </div>

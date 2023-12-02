@@ -1,11 +1,14 @@
 <div id="joinboard">
   <span id="spanjoinboard">Unirse a tablero</span>
   <div id="boards">
-    <div
-      class="board"
-      *ngFor="let board of boards"
-    >
-      <button class="boardname" (click)="sendboardid(board.sessionId)" [routerLink]="['../boardnotes']">{{ board.sessionName }}</button>
+    <div class="board" *ngFor="let board of boards">
+      <button
+        class="boardname"
+        (click)="sendboardid(board.sessionId!)"
+        [routerLink]="['../boardnotes']"
+      >
+        {{ board.sessionName }}
+      </button>
     </div>
   </div>
 </div>
