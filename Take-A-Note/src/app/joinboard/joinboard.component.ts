@@ -27,6 +27,6 @@ export class JoinboardComponent implements OnInit {
   }
 
   public sendboardid(id: string) {
-    this.boardnotes.idboard.emit(id);
+    this.boardnotes.setIdBoard(id);
   }
 }

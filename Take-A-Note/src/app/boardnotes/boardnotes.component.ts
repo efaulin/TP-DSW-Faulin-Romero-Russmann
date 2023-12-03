@@ -17,7 +17,7 @@ export class BoardnotesComponent implements OnInit {
   public notes: Note[] = [];
 
   ngOnInit(): void {
-    this.boardnotes.idboard.subscribe((id) => {
+    this.boardnotes.getidboard.subscribe((id) => {
       this.getnotes(id);
     });
   }
@@ -26,16 +26,8 @@ export class BoardnotesComponent implements OnInit {
     console.log(id);
     this.rest.get(`http://localhost:3000/api/notas/buscar/${id}`).subscribe({
       next: (res) => {
-        console.log(res);
-        this.notes = structuredClone(JSON.parse(JSON.stringify(res)));
-        console.log(this.notes);
+        this.notes = Object.values(res);
       },
     });
-  }
-  public getidnote(i: number, note: Note) {
-    return note.idItem;
-  }
-  public getnotas() {
-    console.log(this.notes);
   }
 }
