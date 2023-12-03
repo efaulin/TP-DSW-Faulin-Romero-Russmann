@@ -4,16 +4,21 @@ import { Tablero } from "./partida.entity.js"
 
 const em = orm.em
 
-
-function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
-    req.body.data={
-        sessionId: req.body.sessionId,
-        sessionDate: req.body.sessionDate,
-        sessionName: req.body.sessionName
+function sanitizeInput( req: Request, res: Response, next: NextFunction) {
+    req.body.data = {
+      name: req.body.name,
+      desc: req.body.desc,
+      notes: req.body.notes
     }
-
+    //more checks here
+  
+    Object.keys(req.body.data).forEach((key) => {
+      if (req.body.data[key] === undefined) {
+        delete req.body.data[key]
+      }
+    })
     next()
-}
+  }
 
 async function findAll(req: Request, res: Response){
     try{
@@ -36,7 +41,7 @@ async function findOne(req: Request, res: Response){
 
 async function add(req: Request, res: Response){
     try{
-        const tablero = em.create(Tablero, req.body)
+        const tablero = em.create(Tablero, req.body.data)
         await em.flush()
         res.status(201).send({message:'Tablero creado Exitosamente'})
     } catch (error: any){
@@ -47,23 +52,23 @@ async function add(req: Request, res: Response){
 async function update(req: Request, res: Response){
     try{
         const id: any = req.params.id
-        const tablero = em.getReference(Tablero, id)
+        const tablero = await em.findOneOrFail(Tablero, { id })
         em.assign(tablero, req.body)
         em.flush()
         return res.status(200).send({message: "Datos del Tablero actualizados correctamente"})
     } catch(error: any) {
-        return res.status(404).send({message: "Tablero no Encontrado"})
+        return res.status(500).send({message: "Error al Actualizar"})
     }
 }
 
 async function remove(req: Request, res: Response){
     try{
         const id: any = req.params.id
-        const tablero = em.getReference(Tablero, id)
+        const tablero = await em.findOneOrFail(Tablero, { id })
         await em.removeAndFlush(tablero)
         res.status(200).send({message: "Tablero borrado correctamente"})
     } catch(error: any){
-        res.status(404).send({message: "Tablero no Encontrado"})
+        res.status(500).send({message: "Error al Borrar"})
     }
 }
 
@@ -76,4 +81,4 @@ async function findByDesc(req: Request, res: Response){
     }
 }
 
-export {sanitizeSessionInput, findAll, findOne, add, update, remove, findByDesc}
+export {sanitizeInput, findAll, findOne, add, update, remove, findByDesc}

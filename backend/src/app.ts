@@ -5,7 +5,6 @@ import { SessionRouter } from './classes/partida/partida.routes.js'
 import { NoteRouter } from './classes/carta/note.routes.js'
 import { LogRouter } from './classes/logs/log.routes.js'
 import cors from 'cors'
-import {Server, Socket} from 'socket.io'
 import { orm } from './shared/db/orm.js'
 import { RequestContext } from '@mikro-orm/core'
 
@@ -35,7 +34,4 @@ app.use((_, res) =>{
     console.log('Server up and running')
 })
 
-const io = new Server(server, {
-
-})
 

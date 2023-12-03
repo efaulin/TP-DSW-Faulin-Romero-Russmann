@@ -2,22 +2,22 @@
 GET http://localhost:3000/api/tablas
 
 ### findOne
-GET http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9
+GET http://localhost:3000/api/tablas/655ab36191a95be5c895b5f1
 
 ### findByDesc
-GET http://localhost:3000/api/tablas/buscar/pap
+GET http://localhost:3000/api/tablas/buscar/jav
 
 ### add
 POST http://localhost:3000/api/tablas
 Content-Type: application/json
 
 {
-    "name": "El tablero del papu",
-    "desc": "un tablero donde se anotan las cosas del papu"
+    "name": "El tablero del javi",
+    "desc": "el presidente de los argentinos"
 }
 
 ### update
-PUT http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9
+PUT http://localhost:3000/api/tablas/655aa16a0aa44e64c2997cf9
 Content-Type: application/json
 
 {
@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### delete
-DELETE http://localhost:3000/api/tablas/655aa16a09144e64c2997cf9
+DELETE http://localhost:3000/api/tablas/655ad57f8dc2d25b419a53ac
