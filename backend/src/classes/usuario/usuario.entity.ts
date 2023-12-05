@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb";
+
 
 export class Usuario{
     constructor(
@@ -6,8 +6,7 @@ export class Usuario{
         public nick: string,
         public nomUser: string,
         public passwd: string,
-        public mail: string,
-        public _id ?: ObjectId
+        public mail: string
     )
     {}
 }
