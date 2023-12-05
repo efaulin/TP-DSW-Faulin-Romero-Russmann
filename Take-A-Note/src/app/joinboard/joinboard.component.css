@@ -46,6 +46,15 @@
 }
 .boardname {
   display: inline-block;
+  text-align: center;
   vertical-align: middle;
   line-height: normal;
+  background-color: transparent;
+  border: 0px;
+  color: #000;
+  width: 200px;
+  height: 200px;
+}
+.board:hover {
+  filter: brightness(1.05);
 }

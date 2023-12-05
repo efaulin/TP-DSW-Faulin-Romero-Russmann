@@ -18,9 +18,10 @@
 #notes {
   overflow: auto;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 200px 200px;
   grid-auto-rows: 235px;
   justify-content: space-evenly;
+  justify-items: center;
   padding-top: 25px;
   padding-bottom: 25px;
   width: 500px;
@@ -43,9 +44,42 @@
   border: 2px solid #ccb466;
   text-align: center;
   line-height: 200px;
+  position: relative;
 }
-.notedesc {
+input {
   display: inline-block;
+  text-align: center;
   vertical-align: middle;
   line-height: normal;
+  background-color: transparent;
+  border: 0px;
+  color: #000;
+  width: 200px;
+  height: 200px;
+}
+#delete {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: red;
+  background: transparent;
+  border: 0px;
+}
+#create {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background: #e8d38e;
+  font-size: 64px;
+  vertical-align: middle;
+  border: 0px;
+}
+#create:hover {
+  filter: brightness(1.05);
+}
+.note:hover {
+  filter: brightness(1.05);
 }

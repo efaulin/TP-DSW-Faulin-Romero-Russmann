@@ -1,8 +1,17 @@
 <div id="boardnotes">
   <span id="spanboardnotes">Notas del tablero</span>
   <div id="notes">
-    <div class="note" *ngFor="let note of notes">
-      <span class="notedesc">{{ note.desc }}</span>
+    <div class="note" *ngFor="let note of notes; index as i">
+      <input
+        type="text"
+        [(ngModel)]="notes[i].desc"
+        (keyup)="savenote(notes[i].idItem!, i)"
+        [style.order]="notes[i].position"
+      />
+      <button id="delete" (click)="deletenote(notes[i].idItem!)">X</button>
+    </div>
+    <div class="note">
+      <button id="create" (click)="addnote(notes.length + 1)">+</button>
     </div>
   </div>
 </div>

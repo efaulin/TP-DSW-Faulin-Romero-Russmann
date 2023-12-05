@@ -15,19 +15,49 @@ export class BoardnotesComponent implements OnInit {
   ) {}
 
   public notes: Note[] = [];
+  public idboard: string = '';
 
   ngOnInit(): void {
     this.boardnotes.getidboard.subscribe((id) => {
+      this.idboard = id;
       this.getnotes(id);
     });
   }
 
   public getnotes(id: string) {
     console.log(id);
-    this.rest.get(`http://localhost:3000/api/notas/buscar/${id}`).subscribe({
-      next: (res) => {
+    this.rest
+      .get(`http://localhost:3000/api/notas/buscar/${id}`)
+      .subscribe((res) => {
         this.notes = Object.values(res);
-      },
-    });
+        console.log(this.notes);
+      });
+  }
+
+  public savenote(idnote: string, index: number) {
+    this.rest
+      .put(`http://localhost:3000/api/notas/${idnote}`, this.notes[index])
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+
+  public addnote(pos: number) {
+    const note = new Note('', pos);
+    this.rest
+      .post(`http://localhost:3000/api/notas/${this.idboard}`, note)
+      .subscribe((res) => {
+        console.log(res);
+        this.getnotes(this.idboard);
+      });
+  }
+
+  public deletenote(idnote: string) {
+    this.rest
+      .delete(`http://localhost:3000/api/notas/${idnote}`)
+      .subscribe((res) => {
+        console.log(res);
+        this.getnotes(this.idboard);
+      });
   }
 }
