@@ -19,7 +19,7 @@ Take-A-Note es una pagina web donde los usuarios crean espacios de trabajo denom
 
 ### Modelo
 
-![Diagrama Entidad-Relacion](https://github.com/pandugat/TP-DSW-Faulin-Romero-Russmann/blob/main/Imagen/TPDER.png?raw=true)
+![Diagrama Entidad-Relacion](https://github.com/efaulin/TP-DSW-Faulin-Romero-Russmann/blob/fc08b0dc8d5f22b6bc8f08057062f13fb8882ebc/Imagen/TPDER.png)
 
 ## Alcance Funcional
 
