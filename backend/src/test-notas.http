@@ -1,0 +1,31 @@
+### findAll
+GET http://localhost:3000/api/notas
+
+### findOne
+GET http://localhost:3000/api/notas/655aa16a09144e64c2997cf9
+
+### findBySession
+GET http://localhost:3000/api/notas/buscar/656bbd95aa75d05ad5cfb919
+
+### add
+POST http://localhost:3000/api/notas
+Content-Type: application/json
+
+{
+    "tablero": "655ab36191a95be5c895b5f1",
+    "desc": "anota esto otro crack",
+    "position": 3
+}
+
+### update
+PUT http://localhost:3000/api/notas/655aa16a09144e64c2997cf9
+Content-Type: application/json
+
+{
+    "tablero": "655ad57f8dc2d25b419a53ac",
+    "desc": "anota esto otro maquina",
+    "position": 3
+}
+
+### delete
+DELETE http://localhost:3000/api/notas/656bbd95aa75d05ad5cfb919
