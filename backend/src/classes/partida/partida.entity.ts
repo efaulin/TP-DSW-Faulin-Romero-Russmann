@@ -6,8 +6,6 @@ import { BaseEntity} from "../../shared/db/baseEntity.entity.js";
 export class Tablero extends BaseEntity{
     @Property({nullable: false})
     name!: string
-    @Property()
-    desc?: string
-    @OneToMany(() => Note, (note) => note.tablero, {cascade: [Cascade.ALL]})
+    @OneToMany(() => Note, (note) => note.board, {cascade: [Cascade.ALL]})
     notes = new Collection<Note>(this)
 }
