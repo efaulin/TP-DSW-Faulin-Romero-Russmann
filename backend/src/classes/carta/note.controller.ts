@@ -23,7 +23,7 @@ function sanitizeInput( req: Request, res: Response, next: NextFunction) {
 
 async function findAll(_: Request, res: Response){
     try{
-        const notas = await em.find(Note, {}, {populate: ['board']})
+        const notas = await em.find(Note, {})
         res.status(200).json(notas)
     } catch (error: any){
         res.status(500).json({message: 'Error!'})
@@ -33,7 +33,7 @@ async function findAll(_: Request, res: Response){
 async function findOne(req: Request, res: Response){
     try{
         const id: any = req.params.id
-    const nota = await em.findOneOrFail(Note, { id: id }, {populate: ['board']})
+    const nota = await em.findOneOrFail(Note, { id: id })
     res.status(200).json(nota)
     } catch (error: any){
         res.status(404).send({message:'Nota Not Found'})
