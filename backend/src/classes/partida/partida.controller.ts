@@ -7,7 +7,6 @@ const em = orm.em
 function sanitizeInput( req: Request, res: Response, next: NextFunction) {
     req.body.data = {
       name: req.body.name,
-      desc: req.body.desc,
       notes: req.body.notes
     }
     //more checks here
