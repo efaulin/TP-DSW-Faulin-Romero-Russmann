@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Note } from '../classes/noteclass';
 import { BoardNotesService } from '../board-notes.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-boardnotes',
   templateUrl: './boardnotes.component.html',
   styleUrls: ['./boardnotes.component.css'],
 })
-export class BoardnotesComponent implements OnInit {
+export class BoardnotesComponent implements OnInit, OnDestroy {
   constructor(
     private rest: RestService,
     private boardnotes: BoardNotesService
@@ -16,12 +17,17 @@ export class BoardnotesComponent implements OnInit {
 
   public notes: Note[] = [];
   public idboard: string = '';
+  private sub?: Subscription;
 
   ngOnInit(): void {
-    this.boardnotes.getidboard.subscribe((id) => {
+    this.sub = this.boardnotes.getidboard.subscribe((id) => {
       this.idboard = id;
       this.getnotes(id);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
   }
 
   public getnotes(id: string) {
@@ -43,13 +49,11 @@ export class BoardnotesComponent implements OnInit {
   }
 
   public addnote(pos: number) {
-    const note = new Note('', pos);
-    this.rest
-      .post(`http://localhost:3000/api/notas/${this.idboard}`, note)
-      .subscribe((res) => {
-        console.log(res);
-        this.getnotes(this.idboard);
-      });
+    const note = new Note('', pos, this.idboard);
+    this.rest.post(`http://localhost:3000/api/notas`, note).subscribe((res) => {
+      console.log(res);
+      this.getnotes(this.idboard);
+    });
   }
 
   public deletenote(idnote: string) {

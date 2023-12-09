@@ -1,33 +1,35 @@
 #joinboard {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spanjoinboard {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 23px;
-  left: 90px;
+}
+input {
+  flex-shrink: 0;
+  background: #fff29c;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  border: 0;
+  position: absolute;
+  color: #000;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
 }
 #boards {
   overflow: auto;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-rows: 235px;
   justify-content: space-evenly;
+  grid-auto-rows: 235px;
   padding-top: 25px;
   padding-bottom: 25px;
-  width: 500px;
-  height: 800px;
   position: absolute;
-  top: 136px;
-  left: 38px;
   background: linear-gradient(
       0deg,
       rgba(255, 226, 169, 0.5) 0%,
@@ -37,12 +39,12 @@
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
 .board {
-  width: 200px;
-  height: 200px;
   background: #e8d38e;
   border: 2px solid #ccb466;
   text-align: center;
   line-height: 200px;
+  width: 200px;
+  height: 200px;
 }
 .boardname {
   display: inline-block;
@@ -57,4 +59,79 @@
 }
 .board:hover {
   filter: brightness(1.05);
+}
+@media (max-width: 768px) {
+  #joinboard {
+    width: 576px;
+    height: 1024px;
+  }
+  #spanjoinboard {
+    font-size: 64px;
+    top: 23px;
+    left: 90px;
+  }
+  input {
+    width: 480px;
+    height: 50px;
+    top: 158px;
+    left: 38px;
+    font-size: 36px;
+  }
+  #boards {
+    grid-template-columns: 200px 200px;
+    width: 500px;
+    height: 750px;
+    top: 236px;
+    left: 38px;
+  }
+}
+@media (min-width: 768px) {
+  #joinboard {
+    width: 768px;
+    height: 1024px;
+  }
+  #spanjoinboard {
+    font-size: 96px;
+    top: 16px;
+    left: 87px;
+  }
+  input {
+    width: 680px;
+    height: 75px;
+    top: 146px;
+    left: 34px;
+    font-size: 48px;
+  }
+  #boards {
+    grid-template-columns: 200px 200px 200px;
+    width: 700px;
+    height: 750px;
+    top: 238px;
+    left: 34px;
+  }
+}
+@media (min-width: 992px) {
+  #joinboard {
+    width: 992px;
+    height: 1024px;
+  }
+  #spanjoinboard {
+    font-size: 108px;
+    top: 0px;
+    left: 165px;
+  }
+  input {
+    width: 880px;
+    height: 100px;
+    top: 137px;
+    left: 46px;
+    font-size: 64px;
+  }
+  #boards {
+    grid-template-columns: 200px 200px 200px 200px;
+    width: 900px;
+    height: 700px;
+    top: 278px;
+    left: 46px;
+  }
 }

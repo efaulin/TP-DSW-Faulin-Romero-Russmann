@@ -1,55 +1,115 @@
 #createboard {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spancreateboard {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 55px;
-  left: 120px;
 }
 #boardname {
-  width: 480px;
-  height: 103px;
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 415px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding-left: 20px;
 }
 button {
-  width: 500px;
-  height: 103px;
   flex-shrink: 0;
   border-radius: 15px;
   background: #fca89d;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 568px;
-  left: 38px;
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 button:hover {
   filter: brightness(1.05) drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+@media (max-width: 768px) {
+  #createboard {
+    width: 576px;
+    height: 1024px;
+  }
+  #spancreateboard {
+    font-size: 64px;
+    top: 55px;
+    left: 120px;
+  }
+  #boardname {
+    width: 480px;
+    height: 103px;
+    top: 415px;
+    left: 38px;
+    font-size: 40px;
+  }
+  button {
+    width: 500px;
+    height: 103px;
+    top: 568px;
+    left: 38px;
+    font-size: 64px;
+  }
+}
+@media (min-width: 768px) {
+  #createboard {
+    width: 768px;
+    height: 1024px;
+  }
+  #spancreateboard {
+    font-size: 96px;
+    top: 46px;
+    left: 132px;
+  }
+  #boardname {
+    width: 580px;
+    height: 123.6px;
+    top: 415px;
+    left: 84px;
+    font-size: 48px;
+  }
+  button {
+    width: 600px;
+    height: 123.6px;
+    top: 568px;
+    left: 84px;
+    font-size: 96px;
+  }
+}
+@media (min-width: 992px) {
+  #createboard {
+    width: 992px;
+    height: 1024px;
+  }
+  #spancreateboard {
+    font-size: 128px;
+    top: 36px;
+    left: 160px;
+  }
+  #boardname {
+    width: 680px;
+    height: 144.2px;
+    top: 415px;
+    left: 146px;
+    font-size: 54px;
+  }
+  button {
+    width: 700px;
+    height: 144.2px;
+    top: 591px;
+    left: 146px;
+    font-size: 128px;
+  }
 }

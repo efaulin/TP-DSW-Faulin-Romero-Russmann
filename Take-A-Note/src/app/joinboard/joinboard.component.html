@@ -1,13 +1,19 @@
 <div id="joinboard">
   <span id="spanjoinboard">Unirse a tablero</span>
+  <input
+    type="text"
+    placeholder="Filtrar por nombre"
+    [(ngModel)]="name"
+    (keyup)="filterboards()"
+  />
   <div id="boards">
     <div class="board" *ngFor="let board of boards">
       <button
         class="boardname"
-        (click)="sendboardid(board.sessionId!)"
+        (click)="sendboardid(board.id!)"
         [routerLink]="['../boardnotes']"
       >
-        {{ board.sessionName }}
+        {{ board.name }}
       </button>
     </div>
   </div>
