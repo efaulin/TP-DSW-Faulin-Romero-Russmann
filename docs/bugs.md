@@ -6,7 +6,11 @@
 - 02/12/23: Las operaciones de actualizacion y borrado de notas no devuelve error cuando se le proporciona un id inexistente y finaliza como si la operacion se hubiera realizado correctamente sobre el id proporcionado. Dado que las funciones de actualizacion y borrado solo hacian referencia al objeto con la id suministrada, este podia no existir y ejecutar la operacion a la base de datos con total normalidad, en su lugar ahora las operaciones realizan una consulta a la base de datos para obtener el objeto solicitado, en caso de no encontrarlo, la operacion no puede continuar y devuelve el error.
 
 ### Frontend
-29/09/23: El frontend no realiza correctamente la request al backend cuando se consulta la lista de notas pertenecientes a una tabla.
+29/09/23: El frontend no realiza correctamente la request al backend cuando se consulta la lista de notas pertenecientes a una tabla, devolviendo un arreglo vacio, con elementos repetidos, etc.
+
+
+## Issues
+- 05/11/23: No era posible la conexion entre el componente que contiene los tableros con el componente que contiene las notas.
 
 ## Features
 ### Backend
