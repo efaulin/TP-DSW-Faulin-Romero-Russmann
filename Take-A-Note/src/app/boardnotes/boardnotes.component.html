@@ -2,11 +2,11 @@
   <span id="spanboardnotes">Notas del tablero</span>
   <div id="notes">
     <div class="note" *ngFor="let note of notes; index as i">
-      <input
+      <textarea
         type="text"
         [(ngModel)]="notes[i].desc"
         (keyup)="savenote(notes[i].id!, i)"
-      />
+      ></textarea>
       <button id="delete" (click)="deletenote(notes[i].id!)">X</button>
     </div>
     <div class="note">

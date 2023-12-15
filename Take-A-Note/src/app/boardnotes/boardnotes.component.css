@@ -36,8 +36,9 @@
   line-height: 200px;
   position: relative;
 }
-input {
-  display: inline-block;
+textarea {
+  display: inline-flex;
+  resize: none;
   text-align: center;
   vertical-align: middle;
   line-height: normal;
@@ -83,6 +84,9 @@ input {
     top: 23px;
     left: 90px;
   }
+  textarea {
+    font-size: 22px;
+  }
   #notes {
     grid-template-columns: 200px 200px;
     width: 500px;
@@ -106,6 +110,9 @@ input {
     font-size: 96px;
     top: 16px;
     left: 79px;
+  }
+  textarea {
+    font-size: 24px;
   }
   #notes {
     grid-template-columns: 200px 200px 200px;
@@ -137,6 +144,9 @@ input {
     height: 800px;
     top: 136px;
     left: 46px;
+  }
+  textarea {
+    font-size: 26px;
   }
   #delete {
     font-size: 24px;
