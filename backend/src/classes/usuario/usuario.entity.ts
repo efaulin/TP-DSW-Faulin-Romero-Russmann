@@ -8,6 +8,6 @@ export class Usuario extends BaseEntity{
     name!: string
     @Property({nullable: false})  
     passwd!: string
-    @Property({nullable: true})
+    @Property({nullable: false})
     mail?: string
 }

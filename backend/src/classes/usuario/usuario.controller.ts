@@ -73,4 +73,15 @@ async function update(req: Request, res: Response){
     }
 }
 
-export {sanitizeInput, findAll, findOne, add, update, remove}
+async function validateUser(req: Request, res: Response){
+    try{
+        const usr: any = req.params.usr
+        const pwd: any = req.params.pwd
+    const usuario = await em.findOneOrFail(Usuario, { name: usr , passwd: pwd})
+    res.status(200).json(usuario)
+    } catch (error: any){
+        res.status(404).send({message:'Usuario Not Found'})
+    }
+}
+
+export {sanitizeInput, findAll, findOne, add, update, remove, validateUser}
