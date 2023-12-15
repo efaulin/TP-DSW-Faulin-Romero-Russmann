@@ -32,7 +32,7 @@ Take-A-Note es una pagina web donde los usuarios crean espacios de trabajo denom
 | CRUD Simple        | 1. CRUD Tablero <br> 2. CRUD Usuario                                                                                                                |
 | CRUD Dependiente   | 1. CRUD Nota ==\> CRUD Tablero <br>  |
 | Listado \+ detalle | 1. Busqueda de tableros por descripcion parcial <br> 2. Listado de notas referentes a un tablero                                     |
-| CUU/Epic           | 1. Crear Tablero <br> 2. Crear Nota                                                                                                        |
+| CUU/Epic           | 1. Crear Tablero <br> 2. Crear Nota <br> 3. Crear Usuario                                                                                                    |
 
 - Aprobacion Directa
 
