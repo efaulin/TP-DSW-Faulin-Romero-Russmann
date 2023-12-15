@@ -47,7 +47,7 @@ async function add(req: Request, res: Response){
         await em.flush()
         res.status(201).send({message:'Nota creada Exitosamente'})
     } catch (error: any){
-        res.status(500).json({message: 'Error!'})
+        res.status(500).json({message: error.message})
     }
 }
 

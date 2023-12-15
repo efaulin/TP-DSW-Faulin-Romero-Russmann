@@ -1,0 +1,26 @@
+### findAll: muestra todas las usuarios
+GET http://localhost:3000/api/usuarios
+
+
+### findOne: busca una usuario en particular dado un nombre de usuario
+GET http://localhost:3000/api/usuarios/Luis Alberto Massi
+
+### add: crea una nuevo usuario
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+    "name": "The Fella",
+    "passwd": ""
+}
+
+### update: actualiza una usuario dado un id de usuario (podes poner solo las propiedades a actualizar)
+PUT http://localhost:3000/api/usuarios/657b9499038e8f76f848c56c
+Content-Type: application/json
+
+{
+    "passwd": "canterville901"
+}
+
+### delete: borra una usuario dado un id de usuario
+DELETE http://localhost:3000/api/usuarios/657b9499038e8f76f848c56c

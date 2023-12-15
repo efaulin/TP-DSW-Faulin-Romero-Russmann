@@ -6,7 +6,7 @@ import { Tablero } from "../partida/partida.entity.js";
 export class Note extends BaseEntity{
     @ManyToOne(() => Tablero , {nullable: false})
     board!: Rel<Tablero>
-    @Property()    
+    @Property({nullable: true})    
     desc?: string
     @Property({nullable: false})
     position!: number
