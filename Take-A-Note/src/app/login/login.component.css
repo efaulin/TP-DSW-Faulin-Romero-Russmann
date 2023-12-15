@@ -1,45 +1,31 @@
 #login {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spanlogin {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  left: 222px;
-  top: 55px;
 }
 #tape1 {
   position: absolute;
-  top: 222.13px;
-  left: 7.5px;
   z-index: 1;
 }
 #tape2 {
   position: absolute;
-  top: 250px;
-  right: 25.85px;
   padding-top: 14px;
   z-index: 1;
 }
-#user {
-  width: 480px;
-  height: 103px;
+#name {
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 262px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -47,30 +33,21 @@
 }
 #tape3 {
   position: absolute;
-  top: 356.46px;
-  left: 20.35px;
   margin-top: 44px;
   z-index: 1;
 }
 #tape4 {
   position: absolute;
-  top: 356.46px;
-  right: 21.35px;
   margin-top: 44px;
   z-index: 1;
 }
 #password {
-  width: 480px;
-  height: 103px;
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 415px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -79,32 +56,24 @@
 #passrecover {
   color: #583a9d;
   text-align: center;
-  font-size: 36px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-decoration-line: underline;
   position: absolute;
-  top: 554px;
-  left: 138px;
 }
 #passrecover:hover {
   filter: brightness(1.5);
 }
 input[type="submit"] {
-  width: 500px;
-  height: 103px;
   flex-shrink: 0;
   border-radius: 15px;
   background: #fca89d;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 612px;
-  left: 38px;
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -115,15 +84,239 @@ input[type="submit"]:hover {
 #register {
   color: #583a9d;
   text-align: center;
-  font-size: 36px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-decoration-line: underline;
   position: absolute;
-  top: 735px;
-  left: 209px;
 }
 #register:hover {
   filter: brightness(1.5);
+}
+.error {
+  position: absolute;
+  color: red;
+  z-index: 2;
+}
+#error1 {
+  top: 365px;
+}
+#error2 {
+  top: 520px;
+}
+#error3 {
+  top: 225px;
+}
+@media (max-width: 768px) {
+  #login {
+    width: 576px;
+    height: 1024px;
+  }
+  #spanlogin {
+    font-size: 64px;
+    left: 222px;
+    top: 55px;
+  }
+  #tape1 {
+    top: 222.13px;
+    left: 7.5px;
+  }
+  #tape2 {
+    top: 250px;
+    right: 25.85px;
+  }
+  #name {
+    width: 480px;
+    height: 103px;
+    top: 262px;
+    left: 38px;
+    font-size: 40px;
+  }
+  #tape3 {
+    top: 356.46px;
+    left: 20.35px;
+  }
+  #tape4 {
+    top: 356.46px;
+    right: 21.35px;
+  }
+  #password {
+    width: 480px;
+    height: 103px;
+    top: 415px;
+    left: 38px;
+    font-size: 40px;
+  }
+  #passrecover {
+    font-size: 36px;
+    top: 554px;
+    left: 138px;
+  }
+  input[type="submit"] {
+    width: 500px;
+    height: 103px;
+    top: 612px;
+    left: 38px;
+    font-size: 64px;
+  }
+  #register {
+    font-size: 36px;
+    top: 735px;
+    left: 209px;
+  }
+  .error {
+    font-size: 25px;
+    left: 40px;
+  }
+  #error1 {
+    top: 365px;
+  }
+  #error2 {
+    top: 520px;
+  }
+  #error3 {
+    top: 225px;
+  }
+}
+@media (min-width: 768px) {
+  #login {
+    width: 768px;
+    height: 1024px;
+  }
+  #spanlogin {
+    font-size: 96px;
+    left: 285px;
+    top: 46px;
+  }
+  #tape1 {
+    top: 172.13px;
+    left: 38.5px;
+  }
+  #tape2 {
+    top: 200px;
+    right: 75.48px;
+  }
+  #name {
+    width: 580px;
+    height: 124px;
+    top: 212px;
+    left: 84px;
+    font-size: 48px;
+  }
+  #tape3 {
+    top: 338.46px;
+    left: 25.65px;
+  }
+  #tape4 {
+    top: 338.46px;
+    right: 22.48px;
+  }
+  #password {
+    width: 580px;
+    height: 124px;
+    top: 397px;
+    left: 84px;
+    font-size: 48px;
+  }
+  #passrecover {
+    font-size: 36px;
+    top: 554px;
+    left: 138px;
+  }
+  input[type="submit"] {
+    width: 600px;
+    height: 124px;
+    top: 635px;
+    left: 84px;
+    font-size: 72px;
+  }
+  #register {
+    font-size: 48px;
+    top: 802px;
+    left: 279px;
+  }
+  .error {
+    font-size: 30px;
+    left: 84px;
+  }
+  #error1 {
+    top: 335px;
+  }
+  #error2 {
+    top: 520px;
+  }
+  #error3 {
+    top: 175px;
+  }
+}
+@media (min-width: 992px) {
+  #login {
+    width: 992px;
+    height: 1024px;
+  }
+  #spanlogin {
+    font-size: 128px;
+    left: 364px;
+    top: 35px;
+  }
+  #tape1 {
+    top: 194.13px;
+    left: 100.5px;
+  }
+  #tape2 {
+    top: 243px;
+    right: 131.48px;
+  }
+  #name {
+    width: 680px;
+    height: 144.67px;
+    top: 234px;
+    left: 146px;
+    font-size: 56px;
+  }
+  #tape3 {
+    top: 360.46px;
+    left: 87.65px;
+  }
+  #tape4 {
+    top: 358.46px;
+    right: 83.48px;
+  }
+  #password {
+    width: 680px;
+    height: 144.67px;
+    top: 419px;
+    left: 146px;
+    font-size: 56px;
+  }
+  #passrecover {
+    font-size: 36px;
+    top: 554px;
+    left: 138px;
+  }
+  input[type="submit"] {
+    width: 700px;
+    height: 144.67px;
+    top: 657px;
+    left: 146px;
+    font-size: 72px;
+  }
+  #register {
+    font-size: 56px;
+    top: 834px;
+    left: 371px;
+  }
+  .error {
+    font-size: 35px;
+    left: 146px;
+  }
+  #error1 {
+    top: 375px;
+  }
+  #error2 {
+    top: 560px;
+  }
+  #error3 {
+    top: 190px;
+  }
 }

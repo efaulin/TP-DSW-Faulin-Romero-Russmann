@@ -22,7 +22,7 @@
   line-height: normal;
   padding-left: 20px;
 }
-button {
+#create {
   flex-shrink: 0;
   border-radius: 15px;
   background: #fca89d;
@@ -35,8 +35,12 @@ button {
   font-weight: 400;
   line-height: normal;
 }
-button:hover {
+#create:hover {
   filter: brightness(1.05) drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+#error {
+  position: absolute;
+  color: red;
 }
 @media (max-width: 768px) {
   #createboard {
@@ -55,12 +59,20 @@ button:hover {
     left: 38px;
     font-size: 40px;
   }
-  button {
+  #create {
     width: 500px;
     height: 103px;
     top: 568px;
     left: 38px;
     font-size: 64px;
+  }
+  #error {
+    font-size: 20px;
+    top: 375px;
+    left: 20px;
+  }
+  #goback {
+    font-size: 24px;
   }
 }
 @media (min-width: 768px) {
@@ -80,12 +92,20 @@ button:hover {
     left: 84px;
     font-size: 48px;
   }
-  button {
+  #create {
     width: 600px;
     height: 123.6px;
     top: 568px;
     left: 84px;
     font-size: 96px;
+  }
+  #error {
+    font-size: 25px;
+    top: 375px;
+    left: 50px;
+  }
+  #goback {
+    font-size: 30px;
   }
 }
 @media (min-width: 992px) {
@@ -105,11 +125,19 @@ button:hover {
     left: 146px;
     font-size: 54px;
   }
-  button {
+  #create {
     width: 700px;
     height: 144.2px;
     top: 591px;
     left: 146px;
     font-size: 128px;
+  }
+  #error {
+    font-size: 30px;
+    top: 365px;
+    left: 100px;
+  }
+  #goback {
+    font-size: 36px;
   }
 }

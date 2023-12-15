@@ -1,33 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Note } from '../classes/noteclass';
-import { BoardNotesService } from '../board-notes.service';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boardnotes',
   templateUrl: './boardnotes.component.html',
   styleUrls: ['./boardnotes.component.css'],
 })
-export class BoardnotesComponent implements OnInit, OnDestroy {
-  constructor(
-    private rest: RestService,
-    private boardnotes: BoardNotesService
-  ) {}
+export class BoardnotesComponent implements OnInit {
+  constructor(private rest: RestService, private route: ActivatedRoute) {}
 
   public notes: Note[] = [];
   public idboard: string = '';
-  private sub?: Subscription;
 
   ngOnInit(): void {
-    this.sub = this.boardnotes.getidboard.subscribe((id) => {
-      this.idboard = id;
-      this.getnotes(id);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.idboard = this.route.snapshot.paramMap.get('id')!;
+    this.getnotes(this.idboard);
   }
 
   public getnotes(id: string) {

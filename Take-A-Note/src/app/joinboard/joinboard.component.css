@@ -84,6 +84,12 @@ input {
     top: 236px;
     left: 38px;
   }
+  .boardname {
+    font-size: 24px;
+  }
+  #goback {
+    font-size: 24px;
+  }
 }
 @media (min-width: 768px) {
   #joinboard {
@@ -109,6 +115,12 @@ input {
     top: 238px;
     left: 34px;
   }
+  .boardname {
+    font-size: 28px;
+  }
+  #goback {
+    font-size: 30px;
+  }
 }
 @media (min-width: 992px) {
   #joinboard {
@@ -133,5 +145,11 @@ input {
     height: 700px;
     top: 278px;
     left: 46px;
+  }
+  .boardname {
+    font-size: 32px;
+  }
+  #goback {
+    font-size: 36px;
   }
 }

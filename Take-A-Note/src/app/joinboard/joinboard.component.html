@@ -8,13 +8,10 @@
   />
   <div id="boards">
     <div class="board" *ngFor="let board of boards">
-      <button
-        class="boardname"
-        (click)="sendboardid(board.id!)"
-        [routerLink]="['../boardnotes']"
-      >
+      <button class="boardname" (click)="opendialog(board)">
         {{ board.name }}
       </button>
     </div>
   </div>
+  <a id="goback" [routerLink]="['../logged-home']">Volver</a>
 </div>

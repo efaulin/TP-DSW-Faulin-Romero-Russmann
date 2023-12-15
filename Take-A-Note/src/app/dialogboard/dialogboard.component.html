@@ -1,0 +1,13 @@
+<h2 mat-dialog-title id="title">Tablero</h2>
+<div mat-dialog-content>
+  <ul>
+    <li>Nombre: {{ data.name }}</li>
+    <li>Fecha de creación: {{ data.createdAt }}</li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close [routerLink]="['../joinboard/', data.id]">
+    Unirse
+  </button>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

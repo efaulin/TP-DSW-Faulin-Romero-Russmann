@@ -1,89 +1,234 @@
 #register {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spanregister {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 55px;
-  left: 148px;
 }
 #mail {
-  width: 480px;
-  height: 103px;
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 262px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding-left: 20px;
 }
-#user {
-  width: 480px;
-  height: 103px;
+#name {
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 415px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding-left: 20px;
 }
 #password {
-  width: 480px;
-  height: 103px;
   flex-shrink: 0;
   background: #fff29c;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 568px;
-  left: 38px;
   color: #000;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding-left: 20px;
 }
 input[type="submit"] {
-  width: 500px;
-  height: 103px;
   flex-shrink: 0;
   border-radius: 15px;
   background: #fca89d;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   border: 0;
   position: absolute;
-  top: 721px;
-  left: 38px;
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 input[type="submit"]:hover {
   filter: brightness(1.05) drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+.error {
+  position: absolute;
+  color: red;
+  z-index: 2;
+}
+#error1 {
+  top: 225px;
+}
+#error2 {
+  top: 380px;
+}
+#error3 {
+  top: 535px;
+}
+@media (max-width: 768px) {
+  #register {
+    width: 576px;
+    height: 1024px;
+  }
+  #spanregister {
+    font-size: 64px;
+    top: 55px;
+    left: 148px;
+  }
+  #mail {
+    width: 480px;
+    height: 103px;
+    top: 262px;
+    left: 38px;
+    font-size: 40px;
+  }
+  #name {
+    width: 480px;
+    height: 103px;
+    top: 415px;
+    left: 38px;
+    font-size: 40px;
+  }
+  #password {
+    width: 480px;
+    height: 103px;
+    top: 568px;
+    left: 38px;
+    font-size: 40px;
+  }
+  input[type="submit"] {
+    width: 500px;
+    height: 103px;
+    top: 721px;
+    left: 38px;
+    font-size: 64px;
+  }
+  .error {
+    font-size: 25px;
+    left: 40px;
+  }
+  #error1 {
+    top: 225px;
+  }
+  #error2 {
+    top: 380px;
+  }
+  #error3 {
+    top: 535px;
+  }
+}
+@media (min-width: 768px) {
+  #register {
+    width: 768px;
+    height: 1024px;
+  }
+  #spanregister {
+    font-size: 96px;
+    top: 46px;
+    left: 175px;
+  }
+  #mail {
+    width: 580px;
+    height: 124px;
+    top: 212px;
+    left: 84px;
+    font-size: 48px;
+  }
+  #name {
+    width: 580px;
+    height: 124px;
+    top: 397px;
+    left: 84px;
+    font-size: 48px;
+  }
+  #password {
+    width: 580px;
+    height: 124px;
+    top: 581px;
+    left: 84px;
+    font-size: 48px;
+  }
+  input[type="submit"] {
+    width: 600px;
+    height: 124px;
+    top: 766px;
+    left: 84px;
+    font-size: 72px;
+  }
+  .error {
+    font-size: 27.5px;
+    left: 84px;
+  }
+  #error1 {
+    top: 175px;
+  }
+  #error2 {
+    top: 360px;
+  }
+  #error3 {
+    top: 545px;
+  }
+}
+@media (min-width: 992px) {
+  #register {
+    width: 992px;
+    height: 1024px;
+  }
+  #spanregister {
+    font-size: 128px;
+    top: 20px;
+    left: 217px;
+  }
+  #mail {
+    width: 680px;
+    height: 144.67px;
+    top: 212px;
+    left: 147px;
+    font-size: 56px;
+  }
+  #name {
+    width: 680px;
+    height: 144.67px;
+    top: 397px;
+    left: 147px;
+    font-size: 56px;
+  }
+  #password {
+    width: 680px;
+    height: 144.67px;
+    top: 581px;
+    left: 147px;
+    font-size: 56px;
+  }
+  input[type="submit"] {
+    width: 700px;
+    height: 144.67px;
+    top: 766px;
+    left: 147px;
+    font-size: 92px;
+  }
+  .error {
+    font-size: 30px;
+    left: 147px;
+  }
+  #error1 {
+    top: 175px;
+  }
+  #error2 {
+    top: 360px;
+  }
+  #error3 {
+    top: 545px;
+  }
 }

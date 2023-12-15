@@ -39,8 +39,11 @@ svg.fold {
   font-weight: 400;
   line-height: normal;
 }
-span {
-  position: relative;
+button {
+  position: absolute;
+  left: 0;
+  background: transparent;
+  border: 0;
 }
 #createboard:hover {
   filter: brightness(1.05);
@@ -93,8 +96,10 @@ span {
   #menu > div {
     font-size: 40px;
   }
-  span {
-    top: 30px;
+  button {
+    font-size: 40px;
+    width: 500px;
+    height: 103px;
   }
 }
 @media (min-width: 768px) {
@@ -146,8 +151,10 @@ span {
   #menu > div {
     font-size: 48px;
   }
-  span {
-    top: 34px;
+  button {
+    font-size: 48px;
+    width: 600px;
+    height: 123.6px;
   }
 }
 @media (min-width: 992px) {
@@ -199,7 +206,9 @@ span {
   #menu > div {
     font-size: 64px;
   }
-  span {
-    top: 34px;
+  button {
+    font-size: 64px;
+    width: 700px;
+    height: 144.2px;
   }
 }

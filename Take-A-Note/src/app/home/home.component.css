@@ -23,6 +23,12 @@ span {
   line-height: normal;
   position: absolute;
 }
+button {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  left: 0;
+}
 @media (max-width: 768px) {
   #home {
     width: 576px;
@@ -47,8 +53,10 @@ span {
     left: 142px;
   }
   #ingresar {
-    top: 231px;
-    left: 141px;
+    font-size: 64px;
+    font-weight: 400;
+    width: 500px;
+    height: 500px;
   }
 }
 @media (min-width: 768px) {
@@ -79,8 +87,10 @@ span {
     left: 166px;
   }
   #ingresar {
-    top: 272px;
-    left: 137px;
+    font-size: 96px;
+    font-weight: 400;
+    width: 600px;
+    height: 600px;
   }
 }
 @media (min-width: 992px) {
@@ -111,7 +121,9 @@ span {
     left: 206px;
   }
   #ingresar {
-    top: 322px;
-    left: 133px;
+    font-size: 128px;
+    font-weight: 400;
+    width: 700px;
+    height: 700px;
   }
 }

@@ -1,6 +1,6 @@
 <div id="home">
   <span>Take-A-Note</span>
-  <div id="postit" [routerLink]="['logged-home']">
+  <div id="postit">
     <svg
       id="paper"
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,6 @@
     >
       <path d="M100 100L0 0V100H100Z" fill="#E8D38E" />
     </svg>
-    <span id="ingresar">Ingresar</span>
+    <button id="ingresar" [routerLink]="['login']">Ingresar</button>
   </div>
 </div>

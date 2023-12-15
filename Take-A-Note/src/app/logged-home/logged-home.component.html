@@ -1,7 +1,7 @@
 <div id="logged-home">
   <span id="spanlogged-home">Take-A-Note</span>
   <div id="menu">
-    <div id="createboard" [routerLink]="['../createboard']">
+    <div id="createboard">
       <svg
         class="paper"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@
       >
         <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
       </svg>
-      <span>Crear tablero</span>
+      <button [routerLink]="['../createboard']">Crear tablero</button>
     </div>
     <div id="myboards">
       <svg
@@ -55,9 +55,9 @@
       >
         <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
       </svg>
-      <span>Mis tableros</span>
+      <button>Mis tableros</button>
     </div>
-    <div id="joinboard" [routerLink]="['../joinboard']">
+    <div id="joinboard">
       <svg
         class="paper"
         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@
       >
         <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
       </svg>
-      <span>Unirse a tablero</span>
+      <button [routerLink]="['../joinboard']">Unirse a tablero</button>
     </div>
     <div id="myaccount">
       <svg
@@ -111,7 +111,7 @@
       >
         <path d="M29 28.5L0.5 0V28.5H29Z" fill="#7EB6C2" />
       </svg>
-      <span>Mi cuenta</span>
+      <button>Mi cuenta</button>
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Board } from '../classes/boardclass';
-import { BoardNotesService } from '../board-notes.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogboardComponent } from '../dialogboard/dialogboard.component';
 
 @Component({
   selector: 'app-joinboard',
@@ -9,10 +10,7 @@ import { BoardNotesService } from '../board-notes.service';
   styleUrls: ['./joinboard.component.css'],
 })
 export class JoinboardComponent implements OnInit {
-  constructor(
-    private rest: RestService,
-    private boardnotes: BoardNotesService
-  ) {}
+  constructor(private rest: RestService, private dialog: MatDialog) {}
 
   public boards: Board[] = [];
   public name: string = '';
@@ -49,7 +47,11 @@ export class JoinboardComponent implements OnInit {
     }
   }
 
-  public sendboardid(id: string) {
-    this.boardnotes.setIdBoard(id);
+  public opendialog(board: Board) {
+    this.dialog.open(DialogboardComponent, {
+      data: board,
+      autoFocus: true,
+      hasBackdrop: true,
+    });
   }
 }

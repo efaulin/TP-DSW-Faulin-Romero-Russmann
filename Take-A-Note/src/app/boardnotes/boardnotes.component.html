@@ -6,7 +6,6 @@
         type="text"
         [(ngModel)]="notes[i].desc"
         (keyup)="savenote(notes[i].id!, i)"
-        [style.order]="notes[i].position"
       />
       <button id="delete" (click)="deletenote(notes[i].id!)">X</button>
     </div>
@@ -14,4 +13,5 @@
       <button id="create" (click)="addnote(notes.length + 1)">+</button>
     </div>
   </div>
+  <a id="goback" [routerLink]="['../']">Volver</a>
 </div>
