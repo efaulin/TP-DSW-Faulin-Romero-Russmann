@@ -1,33 +1,24 @@
 #boardnotes {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spanboardnotes {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 23px;
-  left: 90px;
 }
 #notes {
   overflow: auto;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-rows: 235px;
   justify-content: space-evenly;
+  justify-items: center;
+  grid-auto-rows: 235px;
   padding-top: 25px;
   padding-bottom: 25px;
-  width: 500px;
-  height: 800px;
   position: absolute;
-  top: 136px;
-  left: 38px;
   background: linear-gradient(
       0deg,
       rgba(255, 226, 169, 0.5) 0%,
@@ -43,9 +34,124 @@
   border: 2px solid #ccb466;
   text-align: center;
   line-height: 200px;
+  position: relative;
 }
-.notedesc {
-  display: inline-block;
+textarea {
+  display: inline-flex;
+  resize: none;
+  text-align: center;
   vertical-align: middle;
   line-height: normal;
+  background-color: transparent;
+  border: 0px;
+  color: #000;
+  width: 200px;
+  height: 200px;
+}
+#delete {
+  text-align: center;
+  position: absolute;
+  color: red;
+  background: transparent;
+  border: 0px;
+  width: 20px;
+  height: 20px;
+  right: 5px;
+  top: 5px;
+}
+#create {
+  text-align: center;
+  background: #e8d38e;
+  vertical-align: middle;
+  border: 0px;
+  width: 200px;
+  height: 200px;
+  font-size: 64px;
+}
+#create:hover {
+  filter: brightness(1.05);
+}
+.note:hover {
+  filter: brightness(1.05);
+}
+@media (max-width: 768px) {
+  #boardnotes {
+    width: 576px;
+    height: 1024px;
+  }
+  #spanboardnotes {
+    font-size: 64px;
+    top: 23px;
+    left: 90px;
+  }
+  textarea {
+    font-size: 22px;
+  }
+  #notes {
+    grid-template-columns: 200px 200px;
+    width: 500px;
+    height: 800px;
+    top: 136px;
+    left: 38px;
+  }
+  #delete {
+    font-size: 16px;
+  }
+  #goback {
+    font-size: 24px;
+  }
+}
+@media (min-width: 768px) {
+  #boardnotes {
+    width: 768px;
+    height: 1024px;
+  }
+  #spanboardnotes {
+    font-size: 96px;
+    top: 16px;
+    left: 79px;
+  }
+  textarea {
+    font-size: 24px;
+  }
+  #notes {
+    grid-template-columns: 200px 200px 200px;
+    width: 700px;
+    height: 800px;
+    top: 136px;
+    left: 34px;
+  }
+  #delete {
+    font-size: 20px;
+  }
+  #goback {
+    font-size: 30px;
+  }
+}
+@media (min-width: 992px) {
+  #boardnotes {
+    width: 992px;
+    height: 1024px;
+  }
+  #spanboardnotes {
+    font-size: 106px;
+    top: 0px;
+    left: 160px;
+  }
+  #notes {
+    grid-template-columns: 200px 200px 200px 200px;
+    width: 900px;
+    height: 800px;
+    top: 136px;
+    left: 46px;
+  }
+  textarea {
+    font-size: 26px;
+  }
+  #delete {
+    font-size: 24px;
+  }
+  #goback {
+    font-size: 36px;
+  }
 }

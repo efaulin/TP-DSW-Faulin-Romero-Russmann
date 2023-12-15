@@ -1,69 +1,214 @@
 #logged-home {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #spanlogged-home {
   color: #000;
   text-align: center;
-  font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 55px;
-  left: 143px;
 }
 #createboard {
-  width: 500px;
-  height: 103px;
   position: absolute;
-  top: 265px;
-  left: 38px;
 }
 #myboards {
-  width: 500px;
-  height: 103px;
   position: absolute;
-  top: 409px;
-  left: 38px;
+  filter: brightness(0.9);
 }
 #joinboard {
-  width: 500px;
-  height: 103px;
   position: absolute;
-  top: 553px;
-  left: 38px;
 }
 #myaccount {
-  width: 500px;
-  height: 103px;
   position: absolute;
-  top: 697px;
-  left: 38px;
+  filter: brightness(0.9);
 }
 svg.paper {
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   position: absolute;
-  left: 0;
-  top: 0;
 }
 svg.fold {
   flex-shrink: 0;
   position: absolute;
-  left: 471.5px;
-  bottom: 74.5px;
 }
 #menu > div {
   color: #000;
   text-align: center;
-  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-span {
-  position: relative;
-  top: 25px;
+button {
+  position: absolute;
+  left: 0;
+  background: transparent;
+  border: 0;
+}
+#createboard:hover {
+  filter: brightness(1.05);
+}
+#joinboard:hover {
+  filter: brightness(1.05);
+}
+@media (max-width: 768px) {
+  #logged-home {
+    width: 576px;
+    height: 1024px;
+  }
+  #spanlogged-home {
+    font-size: 64px;
+    top: 55px;
+    left: 143px;
+  }
+  #createboard {
+    width: 500px;
+    height: 103px;
+    top: 265px;
+    left: 38px;
+  }
+  #myboards {
+    width: 500px;
+    height: 103px;
+    top: 409px;
+    left: 38px;
+  }
+  #joinboard {
+    width: 500px;
+    height: 103px;
+    top: 553px;
+    left: 38px;
+  }
+  #myaccount {
+    width: 500px;
+    height: 103px;
+    top: 697px;
+    left: 38px;
+  }
+  svg.paper {
+    left: 0;
+    top: 0;
+  }
+  svg.fold {
+    left: 471.5px;
+    bottom: 74.5px;
+  }
+  #menu > div {
+    font-size: 40px;
+  }
+  button {
+    font-size: 40px;
+    width: 500px;
+    height: 103px;
+  }
+}
+@media (min-width: 768px) {
+  #logged-home {
+    width: 768px;
+    height: 1024px;
+  }
+  #spanlogged-home {
+    font-size: 96px;
+    top: 46px;
+    left: 166px;
+  }
+  #createboard {
+    width: 600px;
+    height: 123.6px;
+    top: 265px;
+    left: 84px;
+  }
+  #myboards {
+    width: 600px;
+    height: 123.6px;
+    top: 409px;
+    left: 84px;
+  }
+  #joinboard {
+    width: 600px;
+    height: 123.6px;
+    top: 553px;
+    left: 84px;
+  }
+  #myaccount {
+    width: 600px;
+    height: 123.6px;
+    top: 697px;
+    left: 84px;
+  }
+  svg.paper {
+    width: 600px;
+    height: 123.6px;
+    left: 0;
+    top: 0;
+  }
+  svg.fold {
+    width: 34px;
+    height: 34px;
+    left: 566px;
+    bottom: 89.6px;
+  }
+  #menu > div {
+    font-size: 48px;
+  }
+  button {
+    font-size: 48px;
+    width: 600px;
+    height: 123.6px;
+  }
+}
+@media (min-width: 992px) {
+  #logged-home {
+    width: 992px;
+    height: 1024px;
+  }
+  #spanlogged-home {
+    font-size: 128px;
+    top: 65px;
+    left: 206px;
+  }
+  #createboard {
+    width: 700px;
+    height: 144.2px;
+    top: 265px;
+    left: 146px;
+  }
+  #myboards {
+    width: 700px;
+    height: 144.2px;
+    top: 426px;
+    left: 146px;
+  }
+  #joinboard {
+    width: 700px;
+    height: 144.2px;
+    top: 587px;
+    left: 146px;
+  }
+  #myaccount {
+    width: 700px;
+    height: 144.2px;
+    top: 748px;
+    left: 146px;
+  }
+  svg.paper {
+    width: 700px;
+    height: 144.2px;
+    left: 0;
+    top: 0;
+  }
+  svg.fold {
+    width: 40px;
+    height: 40px;
+    left: 660px;
+    bottom: 104.2px;
+  }
+  #menu > div {
+    font-size: 64px;
+  }
+  button {
+    font-size: 64px;
+    width: 700px;
+    height: 144.2px;
+  }
 }

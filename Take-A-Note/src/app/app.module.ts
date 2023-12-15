@@ -13,8 +13,11 @@ import { LoggedHomeComponent } from './logged-home/logged-home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JoinboardComponent } from './joinboard/joinboard.component';
 import { CreateboardComponent } from './createboard/createboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoardnotesComponent } from './boardnotes/boardnotes.component';
+import { DialogboardComponent } from './dialogboard/dialogboard.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'logged-home', component: LoggedHomeComponent },
   { path: 'joinboard', component: JoinboardComponent },
   { path: 'createboard', component: CreateboardComponent },
-  { path: 'boardnotes', component: BoardnotesComponent },
+  { path: 'joinboard/:id', component: BoardnotesComponent },
 ];
 
 @NgModule({
@@ -40,6 +43,7 @@ const appRoutes: Routes = [
     JoinboardComponent,
     CreateboardComponent,
     BoardnotesComponent,
+    DialogboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

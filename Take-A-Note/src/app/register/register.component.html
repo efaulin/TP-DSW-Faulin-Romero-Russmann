@@ -1,13 +1,53 @@
 <div id="register">
   <span id="spanregister">Registrarse</span>
-  <form action="" method="get">
-    <input type="text" name="mail" id="mail" placeholder="Ingrese Mail" />
-    <input type="text" name="user" id="user" placeholder="Ingrese Usuario" />
+  <form [formGroup]="user" (ngSubmit)="submit()">
+    <div
+      id="error1"
+      class="error"
+      *ngIf="
+        user.get('mail')?.invalid &&
+        (user.get('mail')?.dirty || user.get('mail')?.touched)
+      "
+    >
+      Ingrese un mail válido
+    </div>
+    <input
+      type="text"
+      id="mail"
+      placeholder="Ingrese Mail"
+      formControlName="mail"
+    />
+    <div
+      id="error2"
+      class="error"
+      *ngIf="
+        user.get('name')?.invalid &&
+        (user.get('name')?.dirty || user.get('name')?.touched)
+      "
+    >
+      Ingrese un mínimo de 8 caracteres y sin espacios
+    </div>
+    <input
+      type="text"
+      id="name"
+      placeholder="Ingrese Usuario"
+      formControlName="name"
+    />
+    <div
+      id="error3"
+      class="error"
+      *ngIf="
+        user.get('pass')?.invalid &&
+        (user.get('pass')?.dirty || user.get('pass')?.touched)
+      "
+    >
+      Ingrese un mínimo 8 caracteres y sin espacios
+    </div>
     <input
       type="password"
-      name="password"
       id="password"
       placeholder="Ingrese Contraseña"
+      formControlName="pass"
     />
     <input type="submit" value="Registrarse" />
   </form>

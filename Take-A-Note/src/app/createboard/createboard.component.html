@@ -1,12 +1,22 @@
 <div id="createboard">
   <span id="spancreateboard">Crear tablero</span>
-  <form>
+  <div
+    id="error"
+    *ngIf="
+      boardname.get('name')?.invalid &&
+      (boardname.get('name')?.dirty || boardname.get('name')?.touched)
+    "
+  >
+    Debe contener como mínimo 3 caracteres y no pueden ser solo espacios
+  </div>
+  <form [formGroup]="boardname" (ngSubmit)="submit()">
     <input
-      [(ngModel)]="boardname"
       type="text"
       id="boardname"
       placeholder="Ingrese nombre del tablero"
+      formControlName="name"
     />
-    <input type="submit" value="Crear" (click)="createboard()" />
+    <input type="submit" id="create" value="Crear" />
   </form>
+  <a id="goback" [routerLink]="['../logged-home']">Volver</a>
 </div>

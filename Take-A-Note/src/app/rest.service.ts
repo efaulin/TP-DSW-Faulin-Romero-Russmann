@@ -15,4 +15,12 @@ export class RestService {
     //preguntar si está bien "any"
     return this.http.post(url, data);
   }
+
+  public put(url: string, data: any) {
+    return this.http.put(url, data);
+  }
+
+  public delete(url: string) {
+    return this.http.delete(url);
+  }
 }

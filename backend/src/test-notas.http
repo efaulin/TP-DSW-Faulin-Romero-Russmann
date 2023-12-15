@@ -1,0 +1,30 @@
+### findAll: muestra todas las notas
+GET http://localhost:3000/api/notas
+
+
+### findOne: busca una nota en particular dado un id de nota
+GET http://localhost:3000/api/notas/655aa16a09144e64c2997cf9
+
+### findBySession: muestra todas la notas pertenecientes al tablero con la id proporcionada
+GET http://localhost:3000/api/notas/buscar/656bb99138b5838e8bdc4d3b
+
+### add: crea una nueva nota, requiere el id del tablero al que pertenece, la descripcion y la pocision en el tablero
+POST http://localhost:3000/api/notas
+Content-Type: application/json
+
+{
+    "board": "656bb99138b4838e8bdc4d3b",
+    "desc": "para el momazo",
+    "position": 5
+}
+
+### update: actualiza una nota dado un id de nota (podes poner solo las propiedades a actualizar)
+PUT http://localhost:3000/api/notas/657109b1ce684bce9ef9f1aa
+Content-Type: application/json
+
+{
+    "desc": "i see the shoes, i see the money"
+}
+
+### delete: borra una nota dado un id de nota
+DELETE http://localhost:3000/api/notas/657101cbee4186ff4341044c

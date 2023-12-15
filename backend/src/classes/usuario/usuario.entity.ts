@@ -1,13 +1,13 @@
-import { ObjectId } from "mongodb";
+import { Entity, Property} from "@mikro-orm/core";
+import { BaseEntity } from "../../shared/db/baseEntity.entity.js";
 
-export class Usuario{
-    constructor(
-        public idUser: string,
-        public nick: string,
-        public nomUser: string,
-        public passwd: string,
-        public mail: string,
-        public _id ?: ObjectId
-    )
-    {}
+
+@Entity()
+export class Usuario extends BaseEntity{
+    @Property({nullable: false})
+    name!: string
+    @Property({nullable: false})  
+    passwd!: string
+    @Property({nullable: false})
+    mail?: string
 }

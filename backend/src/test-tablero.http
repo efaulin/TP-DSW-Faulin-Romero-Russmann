@@ -1,0 +1,28 @@
+### findAll: encuentra todos los tableros
+GET http://localhost:3000/api/tablas
+
+### findOne: busca un tablero por el id proporcionado
+GET http://localhost:3000/api/tablas/655ab3619aaa5be5c895b5f1
+
+### findByDesc: muestra los tableros donde el nombre coincida parcialmente con el parametro proporcionado
+GET http://localhost:3000/api/tablas/buscar/jav
+
+### add: crea un nuevo tablero, solo se necesita el atributo name
+POST http://localhost:3000/api/tablas
+Content-Type: application/json
+
+{
+    "name": "tablero de prueba"
+}
+
+### update: actualiza el tablero dado por el id asociado (podes poner solo las propiedades a actualizar)
+PUT http://localhost:3000/api/tablas/655ab36191a95be5c895b5f1
+Content-Type: application/json
+
+{
+    "name": "El tablero del papulince"
+
+}
+
+### delete: borra el tablero del id proporcionado
+DELETE http://localhost:3000/api/tablas/657100a6ee4186ff43410449

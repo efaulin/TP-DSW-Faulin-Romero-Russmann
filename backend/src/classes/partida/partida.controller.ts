@@ -1,64 +1,83 @@
 import { Request, Response, NextFunction } from "express"
-import { SessionRepository } from "./partida.repository.js"
+import { orm } from "../../shared/db/orm.js"
 import { Tablero } from "./partida.entity.js"
 
-const tableros = new SessionRepository()
+const em = orm.em
 
-function sanitizeSessionInput(req: Request, res: Response, next: NextFunction){
-    req.body.data={
-        sessionId: req.body.sessionId,
-        sessionDate: req.body.sessionDate,
-        sessionName: req.body.sessionName
+function sanitizeInput( req: Request, res: Response, next: NextFunction) {
+    req.body.data = {
+      name: req.body.name,
+      notes: req.body.notes
     }
-
+    //more checks here
+  
+    Object.keys(req.body.data).forEach((key) => {
+      if (req.body.data[key] === undefined) {
+        delete req.body.data[key]
+      }
+    })
     next()
-}
+  }
 
 async function findAll(req: Request, res: Response){
-    res.json(await tableros.findAll())
+    try{
+        const tablas = await em.find(Tablero, {})
+        res.status(200).json(tablas)
+    } catch (error: any){
+        res.status(500).json({message: 'Error!'})
+    }
 }
 
 async function findOne(req: Request, res: Response){
-    const id = req.params.id
-    const partida = await tableros.findOne({id})
-    if(!partida){
-        return res.status(404).send({message:'Tablero Not Found'})
+    try{
+        const id: any = req.params.id
+    const tablero = await em.findOneOrFail(Tablero, { id: id })
+    res.status(200).json(tablero)
+    } catch (error: any){
+        res.status(404).send({message:'Tablero Not Found'})
     }
-    res.json(partida)
 }
 
 async function add(req: Request, res: Response){
-    const {sessionId, sessionDate, sessionName} = req.body.data
-    const partida = new Tablero (sessionId, sessionDate, sessionName)
-    const nuevo = await tableros.add(partida)
-    return res.status(201).send({message:'Tablero creado Exitosamente'})
+    try{
+        const tablero = em.create(Tablero, req.body.data)
+        await em.flush()
+        res.status(201).send({message:'Tablero creado Exitosamente'})
+    } catch (error: any){
+        res.status(500).json({message: error.message})
+    }
 }
 
 async function update(req: Request, res: Response){
-    req.body.data.sessionId = req.params.id
-    const actualizado = await tableros.update(req.body.data)
-
-    if(!actualizado){
-        return res.status(404).send({message: "Tablero no Encontrado"})
-    }else{
+    try{
+        const id: any = req.params.id
+        const tablero = await em.findOneOrFail(Tablero, { id })
+        em.assign(tablero, req.body)
+        em.flush()
         return res.status(200).send({message: "Datos del Tablero actualizados correctamente"})
+    } catch(error: any) {
+        return res.status(500).send({message: "Error al Actualizar"})
     }
 }
 
 async function remove(req: Request, res: Response){
-    const id = req.params.id
-    const borrado = await tableros.delete({id})
-
-    if(!borrado){
-        return res.status(404).send({message: "Tablero no Encontrado"})
-    }else{
-        return res.status(200).send({message: "Tablero borrado correctamente"})
+    try{
+        const id: any = req.params.id
+        const tablero = await em.findOneOrFail(Tablero, { id })
+        await em.removeAndFlush(tablero)
+        res.status(200).send({message: "Tablero borrado correctamente"})
+    } catch(error: any){
+        res.status(500).send({message: "Error al Borrar"})
     }
 }
 
 async function findByDesc(req: Request, res: Response){
-    const desc = req.params.desc
-    res.json(await tableros.findByDesc({desc}))
+    try{
+        const tablas = await em.find(Tablero, {name: new RegExp(req.params.desc, 'i')})
+        res.status(200).json(tablas)
+    } catch (error: any){
+        res.status(500).json({message: 'Error!'})
+    }
 }
 
-export {sanitizeSessionInput, findAll, findOne, add, update, remove, findByDesc}
+export {sanitizeInput, findAll, findOne, add, update, remove, findByDesc}

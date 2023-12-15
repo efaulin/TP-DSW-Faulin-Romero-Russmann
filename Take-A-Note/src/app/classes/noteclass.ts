@@ -1,8 +1,9 @@
 export class Note {
   constructor(
-    public idItem: string,
-    public idSession: string,
     public desc: string,
-    public position: number
+    public position: number,
+    public board: string,
+    public id?: string,
+    public createdAt?: string
   ) {}
 }

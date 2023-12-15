@@ -1,18 +1,11 @@
 #home {
-  width: 576px;
-  height: 1024px;
   position: relative;
   margin: auto;
 }
 #postit {
-  width: 500px;
-  height: 500px;
   flex-shrink: 0;
   box-sizing: border-box;
   position: absolute;
-  left: 38px;
-  right: 38px;
-  top: 262px;
 }
 #postit:hover {
   filter: brightness(1.05);
@@ -21,26 +14,116 @@
   filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
 }
 #fold {
-  width: 100px;
-  height: 100px;
   flex-shrink: 0;
   position: absolute;
-  left: 400px;
-  bottom: 400px;
 }
 span {
   color: #000;
-  font-size: 64px;
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
   position: absolute;
-  top: 64px;
-  left: 142px;
-  right: 143px;
 }
-#ingresar {
-  top: 231px;
-  left: 141px;
-  right: 142px;
+button {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  left: 0;
+}
+@media (max-width: 768px) {
+  #home {
+    width: 576px;
+    height: 1024px;
+  }
+  #postit {
+    width: 500px;
+    height: 500px;
+    left: 38px;
+    top: 262px;
+  }
+  #fold {
+    width: 100px;
+    height: 100px;
+    left: 400px;
+    bottom: 400px;
+  }
+  span {
+    font-size: 64px;
+    font-weight: 400;
+    top: 64px;
+    left: 142px;
+  }
+  #ingresar {
+    font-size: 64px;
+    font-weight: 400;
+    width: 500px;
+    height: 500px;
+  }
+}
+@media (min-width: 768px) {
+  #home {
+    width: 768px;
+    height: 1024px;
+  }
+  #postit {
+    width: 600px;
+    height: 600px;
+    left: 84px;
+    top: 212px;
+  }
+  #paper {
+    width: 600px;
+    height: 600px;
+  }
+  #fold {
+    width: 120px;
+    height: 120px;
+    left: 480px;
+    bottom: 480px;
+  }
+  span {
+    font-size: 96px;
+    font-weight: 400;
+    top: 66px;
+    left: 166px;
+  }
+  #ingresar {
+    font-size: 96px;
+    font-weight: 400;
+    width: 600px;
+    height: 600px;
+  }
+}
+@media (min-width: 992px) {
+  #home {
+    width: 992px;
+    height: 1024px;
+  }
+  #postit {
+    width: 700px;
+    height: 700px;
+    left: 146px;
+    top: 224px;
+  }
+  #paper {
+    width: 700px;
+    height: 700px;
+  }
+  #fold {
+    width: 140px;
+    height: 140px;
+    left: 560px;
+    bottom: 560px;
+  }
+  span {
+    font-size: 128px;
+    font-weight: 400;
+    top: 65px;
+    left: 206px;
+  }
+  #ingresar {
+    font-size: 128px;
+    font-weight: 400;
+    width: 700px;
+    height: 700px;
+  }
 }

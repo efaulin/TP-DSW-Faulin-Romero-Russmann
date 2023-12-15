@@ -1,6 +1,9 @@
 <div id="login">
   <span id="spanlogin">Login</span>
-  <form action="" method="get">
+  <form [formGroup]="user" (ngSubmit)="submit()">
+    <div id="error3" class="error" *ngIf="error">
+      No existe esa combinación de usuario y contraseña
+    </div>
     <svg
       id="tape1"
       xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +34,22 @@
         style="mix-blend-mode: overlay"
       />
     </svg>
-    <input type="text" name="user" id="user" placeholder="Ingrese Usuario" />
+    <div
+      id="error1"
+      class="error"
+      *ngIf="
+        user.get('name')?.invalid &&
+        (user.get('name')?.dirty || user.get('name')?.touched)
+      "
+    >
+      Este campo es obligatorio
+    </div>
+    <input
+      type="text"
+      id="name"
+      placeholder="Ingrese Usuario"
+      formControlName="name"
+    />
     <svg
       id="tape3"
       xmlns="http://www.w3.org/2000/svg"
@@ -62,13 +80,22 @@
         style="mix-blend-mode: overlay"
       />
     </svg>
+    <div
+      id="error2"
+      class="error"
+      *ngIf="
+        user.get('pass')?.invalid &&
+        (user.get('pass')?.dirty || user.get('pass')?.touched)
+      "
+    >
+      Este campo es obligatorio
+    </div>
     <input
       type="password"
-      name="password"
       id="password"
       placeholder="Ingrese Contraseña"
+      formControlName="pass"
     />
-    <a id="passrecover" [routerLink]="['../recovery']">Olvido su contraseña?</a>
     <input type="submit" value="Iniciar Sesión" />
     <a id="register" [routerLink]="['../register']">Registrarse</a>
   </form>
