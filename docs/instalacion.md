@@ -7,12 +7,14 @@ Para el proceso de instalacion se asumira que se cuenta con el sig. software ins
 ## Instalacion de Dependencias
 Una vez clonado el repositorio, desde la linea de comandos dirigirse al directorio backend, ubicado en el directorio raiz, y ejecutar los siguientes comandos:
 >npm install -g pnpm
+
 >npm install
 
 Esto instalara todos los modulos referentes al backend. 
 
 Una vez terminado el proceso volver al directorio raiz y entrar en la carpeta Take-A-Note y desde alli ejecutar los siguientes comandos:
 >npm install -g @angular/cli@latest
+
 >npm install
 
 Esto realizara el mismo procedimiento pero referido al frontend.
@@ -23,7 +25,5 @@ Desde el directorio raiz dirigirse a la carpeta backend y ejecutar el sig comand
 
 Luego dirigirse a la carpeta Take-A-Note del directorio raiz y ejecutar este comando:
 >ng serve -o
-
-Puede suceder que el comando
 
 Esto iniciara el servidor de Frontend, una vez terminado el proceso de compilado se abrira una ventana del navegador con la pagina de inicio del proyecto.
